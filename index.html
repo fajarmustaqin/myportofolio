@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+
+    
+    
+</head>
+<body class="bg-gray-900 text-gray-100">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-gray-800 shadow p-6 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-white">Fajar Mustaqin</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#home" class="hover:text-indigo-400">Home</a></li>
+                    <li><a href="#about" class="hover:text-indigo-400">About</a></li>
+                    <li><a href="#projects" class="hover:text-indigo-400">Portfolio</a></li>
+                    <li><a href="#snippets" class="hover:text-indigo-400">Snippet</a></li>
+                    <li><a href="#" class="hover:text-indigo-400">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex flex-col justify-center items-center text-center container mx-auto px-6">
+        <h2 class="text-4xl font-bold text-green-400">Hi, I'm Fajar Mustaqin, a Web Developer</h2>
+        <h2 class="text-4xl font-bold text-blue-400">who loves learning new technologies</h2>
+        <h2 class="text-4xl font-bold text-green-400">and collaborating with teams.</h2>        
+    </section>
+    
+
+    <section id="about" class="h-screen flex flex-col justify-center items-center text-center container mx-auto px-6">
+        <h3 class="text-2xl font-bold text-white text-center">About Me</h3>
+        <div class="mt-6 flex justify-center items-center space-x-4">
+            <img src="assets/img/profile.JPG" class="w-40 h-40 rounded-full border-4 border-green-400" alt="Profile Picture">
+            <div class="text-left">
+                <h3 class="text-xl font-bold text-white">Biography</h3>
+                <p class="text-gray-400">Getting Buff +1 for learning, Buff +2 for documentation and more buff on managing team. Excited on <span class="text-blue-400">React</span>, <span class="text-blue-400">UX Research</span>, and <span class="text-blue-400">Agile</span>.</p>
+            </div>
+        </div>
+        <div class="mt-6 flex justify-center space-x-4">
+            <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition duration-300">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition duration-300">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition duration-300">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition duration-300">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- <section id="timeline" class="py-20 container mx-auto px-6">
+        <h3 class="text-2xl font-bold text-white text-center mb-10">Education & Work Experience</h3>
+    
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <div>
+                <h4 class="text-xl font-bold text-yellow-400 text-center mb-6">Work Experience</h4>
+                <div class="relative border-l-4 border-yellow-400 pl-6">
+    
+                    <div class="mb-8 relative">
+                        <div class="absolute -left-7 w-10 h-10 bg-yellow-400 text-white flex justify-center items-center rounded-full">
+                            <i class="fas fa-briefcase text-lg"></i>
+                        </div>
+                        <div class="pl-10">
+                            <h5 class="text-lg font-bold text-white">Web Programmer</h5>
+                            <p class="text-gray-400">Dapur Cokelat (2024 - Sekarang)</p>
+                        </div>
+                    </div>
+    
+                    <div class="mb-8 relative">
+                        <div class="absolute -left-7 w-10 h-10 bg-yellow-400 text-white flex justify-center items-center rounded-full">
+                            <i class="fas fa-code text-lg"></i>
+                        </div>
+                        <div class="pl-10">
+                            <h5 class="text-lg font-bold text-white">Freelance Web Developer</h5>
+                            <p class="text-gray-400">Self-employed (2022 - 2024)</p>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+    
+            <div>
+                <h4 class="text-xl font-bold text-green-400 text-center mb-6">Education</h4>
+                <div class="relative border-l-4 border-green-400 pl-6">
+    
+                    <div class="mb-8 relative">
+                        <div class="absolute -left-7 w-10 h-10 bg-green-400 text-white flex justify-center items-center rounded-full">
+                            <i class="fas fa-graduation-cap text-lg"></i>
+                        </div>
+                        <div class="pl-10">
+                            <h5 class="text-lg font-bold text-white">S1 Teknik Informatika</h5>
+                            <p class="text-gray-400">Universitas XYZ (2020 - 2024)</p>
+                        </div>
+                    </div>
+    
+                    <div class="mb-8 relative">
+                        <div class="absolute -left-7 w-10 h-10 bg-green-400 text-white flex justify-center items-center rounded-full">
+                            <i class="fas fa-school text-lg"></i>
+                        </div>
+                        <div class="pl-10">
+                            <h5 class="text-lg font-bold text-white">SMK Rekayasa Perangkat Lunak</h5>
+                            <p class="text-gray-400">SMK YAPRI Jakarta (2017 - 2020)</p>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+    </section> -->
+    
+    <section id="timeline" class="py-20 container mx-auto px-6">
+        <h3 class="text-2xl font-bold text-white text-center mb-10">Work Experience</h3>
+    
+        <div class="relative">
+            <!-- Garis Timeline -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-600"></div>
+    
+            <!-- Timeline Items -->
+            <div class="space-y-8">
+                <!-- Item 1 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <h4 class="text-lg font-bold text-white">IT Staff Web Programmer</h4>
+                        <p class="text-gray-400">PT. Dapur Cokelat Indonesia</p>
+                        <p class="text-gray-400">May 2024 - Jan 2025</p>
+                    </div>
+                    <div class="w-10 h-10 bg-blue-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                </div>
+    
+                <!-- Item 2 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                    <div class="w-10 h-10 bg-green-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <h4 class="text-lg font-bold text-white">Back End Developer</h4>
+                        <p class="text-gray-400">PT. Nata Connexindo</p>
+                        <p class="text-gray-400">Aug 2023 - Nov 2023</p>
+                    </div>
+                </div>
+    
+                <!-- Item 3 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <h4 class="text-lg font-bold text-white">Web Progammer Internship</h4>
+                        <p class="text-gray-400">PT Arkatama Multi Solusindo</p>
+                        <p class="text-gray-400">Aug 2022 - Des 2022</p>
+                    </div>
+                    <div class="w-10 h-10 bg-yellow-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                </div>
+    
+                <!-- Item 4 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                    <div class="w-10 h-10 bg-purple-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <h4 class="text-lg font-bold text-white">Junior Web Developer</h4>
+                        <p class="text-gray-400">JR. Web Developer</p>
+                        <p class="text-gray-400">2021 - 2022</p>
+                    </div>
+                </div>
+    
+                <!-- Item 5 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <h4 class="text-lg font-bold text-white">Junior Programmer</h4>
+                        <p class="text-gray-400">JR. Programmer</p>
+                        <p class="text-gray-400">2017 - 2021</p>
+                    </div>
+                    <div class="w-10 h-10 bg-red-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="timeline" class="py-20 container mx-auto px-6">
+        <h3 class="text-2xl font-bold text-white text-center mb-10">Pendidikan</h3>
+    
+        <div class="relative">
+            <!-- Garis Timeline -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-600"></div>
+    
+            <!-- Timeline Items -->
+            <div class="space-y-8">
+                <!-- Item 1 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <h4 class="text-lg font-bold text-white">Universitas Negeri Malang - Pendidikan Profesi Guru</h4>
+                        <p class="text-gray-400">Sekolah Pascasarjana</p>
+                        <p class="text-gray-400">2024 - PRESENT</p>
+                    </div>
+                    <div class="w-10 h-10 bg-blue-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                </div>
+    
+                <!-- Item 2 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                    <div class="w-10 h-10 bg-green-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <h4 class="text-lg font-bold text-white">Freelance Programmer</h4>
+                        <p class="text-gray-400">Freelance Web Developer</p>
+                        <p class="text-gray-400">2023 - 2024</p>
+                    </div>
+                </div>
+    
+                <!-- Item 3 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <h4 class="text-lg font-bold text-white">Senior Programmer</h4>
+                        <p class="text-gray-400">SR. Programmer</p>
+                        <p class="text-gray-400">2022 - 2023</p>
+                    </div>
+                    <div class="w-10 h-10 bg-yellow-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                </div>
+    
+                <!-- Item 4 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                    <div class="w-10 h-10 bg-purple-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <h4 class="text-lg font-bold text-white">Junior Web Developer</h4>
+                        <p class="text-gray-400">JR. Web Developer</p>
+                        <p class="text-gray-400">2021 - 2022</p>
+                    </div>
+                </div>
+    
+                <!-- Item 5 -->
+                <div class="flex items-center">
+                    <div class="w-1/2 pr-8 text-right">
+                        <h4 class="text-lg font-bold text-white">Junior Programmer</h4>
+                        <p class="text-gray-400">JR. Programmer</p>
+                        <p class="text-gray-400">2017 - 2021</p>
+                    </div>
+                    <div class="w-10 h-10 bg-red-400 text-white flex justify-center items-center rounded-full z-10">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="w-1/2 pl-8">
+                        <!-- Kosongkan bagian ini jika tidak ada konten -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-20 container mx-auto px-6">
+        <h3 class="text-2xl font-bold text-white text-center">Featured Project</h3>
+        <div class="mt-6 space-y-6">
+            <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6">
+                <img src="project1.png" class="w-full md:w-1/2 rounded-lg" alt="Project 1">
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-bold text-white">Bolder Landingpage</h3>
+                    <p class="text-gray-400">Serrow restructured and designed core pages, creating interactive elements that put users in control and allowed them to discover the information needed to make a decision.</p>
+                </div>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-6">
+                <img src="project2.png" class="w-full md:w-1/2 rounded-lg" alt="Project 2">
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-bold text-white">Kerja Mantul Education Management</h3>
+                    <p class="text-gray-400">Serrow restructured and designed core pages, creating interactive elements that put users in control and allowed them to discover the information needed to make a decision.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Snippet -->
+    <section id="snippets" class="py-20 container mx-auto px-6">
+        <h3 class="text-2xl font-bold text-white text-center">Code Snippet</h3>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-gray-800 p-6 rounded-lg text-white">
+                <h3 class="text-xl font-bold">Nextjs Starter</h3>
+                <p class="text-gray-400">A dead simple for nextjs project.</p>
+            </div>
+            <div class="bg-gray-800 p-6 rounded-lg text-white">
+                <h3 class="text-xl font-bold">Frontend Starter Kit</h3>
+                <p class="text-gray-400">A dead simple for html 5 boilerplate project. Included setup for minify css, html minify, SEO setting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 text-center">
+        <p>&copy; 2025 Fajar Mustaqin. All rights reserved.</p>
+    </footer>
+</body>
+</html>
