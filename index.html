@@ -136,6 +136,67 @@
             display: inline-block;
             min-height: 1.5em;
         }
+
+        /* Carousel Slide Animations */
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutToLeft {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideOutToRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .slide-in-right {
+            animation: slideInFromRight 0.3s ease-out forwards;
+        }
+
+        .slide-in-left {
+            animation: slideInFromLeft 0.3s ease-out forwards;
+        }
+
+        .slide-out-left {
+            animation: slideOutToLeft 0.3s ease-in forwards;
+        }
+
+        .slide-out-right {
+            animation: slideOutToRight 0.3s ease-in forwards;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden transition-colors duration-500">
@@ -165,6 +226,7 @@
                     <li class="w-full lg:w-auto"><a href="#about" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">About</a></li>
                     <li class="w-full lg:w-auto"><a href="#work-experience" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Experience</a></li>
                     <li class="w-full lg:w-auto"><a href="#projects" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Portfolio</a></li>
+                    <li class="w-full lg:w-auto"><a href="#certifications" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Certifications</a></li>
                     <li class="w-full lg:w-auto"><a href="#snippets" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Snippets</a></li>
                 </ul>
 
@@ -283,11 +345,21 @@
     
                     <!-- Skills Tags -->
                     <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-                        <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg text-purple-600 dark:text-purple-400 font-medium hover:bg-purple-500/20 transition-all duration-300">React</span>
-                        <span class="px-4 py-2 bg-indigo-500/10 border border-indigo-500/30 rounded-lg text-indigo-600 dark:text-indigo-400 font-medium hover:bg-indigo-500/20 transition-all duration-300">UX Research</span>
-                        <span class="px-4 py-2 bg-pink-500/10 border border-pink-500/30 rounded-lg text-pink-600 dark:text-pink-400 font-medium hover:bg-pink-500/20 transition-all duration-300">Agile</span>
-                        <span class="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-lg text-blue-600 dark:text-blue-400 font-medium hover:bg-blue-500/20 transition-all duration-300">JavaScript</span>
-                        <span class="px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-lg text-green-600 dark:text-green-400 font-medium hover:bg-green-500/20 transition-all duration-300">Node.js</span>
+                        <span class="px-4 py-2 rounded-lg font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(97, 218, 251, 0.1); color: #61DAFB; border-color: rgba(97, 218, 251, 0.3);">
+                            <i class="fab fa-react mr-1"></i> React
+                        </span>
+                        <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg text-purple-600 dark:text-purple-400 font-semibold hover:bg-purple-500/20 transition-all duration-300 hover:scale-105">
+                            <i class="fas fa-search mr-1"></i> UX Research
+                        </span>
+                        <span class="px-4 py-2 bg-pink-500/10 border border-pink-500/30 rounded-lg text-pink-600 dark:text-pink-400 font-semibold hover:bg-pink-500/20 transition-all duration-300 hover:scale-105">
+                            <i class="fas fa-sync-alt mr-1"></i> Agile
+                        </span>
+                        <span class="px-4 py-2 rounded-lg font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.15); border-color: rgba(247, 223, 30, 0.3);">
+                            <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
+                        </span>
+                        <span class="px-4 py-2 rounded-lg font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(51, 153, 51, 0.1); color: #339933; border-color: rgba(51, 153, 51, 0.3);">
+                            <i class="fab fa-node-js mr-1"></i> Node.js
+                        </span>
             </div>
     
                     <!-- Social Links -->
@@ -526,81 +598,467 @@
             </div>
 
             <div class="max-w-6xl mx-auto space-y-12">
-                <!-- Project 1 -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden">
+                <!-- Project 1 with Image Carousel -->
+                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden" 
+                x-data="{ 
+                    currentSlide: 0, 
+                    direction: 1,
+                    slides: [
+                        'assets/img/projects/login-reseller.png',
+                        'assets/img/projects/dashboard-reseller.png',
+                        'assets/img/projects/product-reseller.png'
+                    ],
+                    nextSlide() {
+                        this.direction = 1;
+                        this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0;
+                    },
+                    prevSlide() {
+                        this.direction = -1;
+                        this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1;
+                    }
+                }">
                     <div class="grid md:grid-cols-2 gap-6">
-                        <div class="relative overflow-hidden h-64 md:h-auto">
-                            <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-indigo-600/20 group-hover:from-purple-500/30 group-hover:to-indigo-600/30 transition-all duration-300">
-                                <div class="flex items-center justify-center h-full">
-                                    <div class="text-center p-8">
-                                        <i class="fas fa-code text-6xl text-purple-600 dark:text-purple-400 mb-4"></i>
-                                        <p class="text-gray-900 dark:text-white text-lg font-semibold">Project Screenshot</p>
+                        <!-- Image Carousel -->
+                        <div class="relative overflow-hidden h-64 md:h-auto bg-gray-100 dark:bg-gray-900">
+                            <!-- Slides Container -->
+                            <div class="relative h-full">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <div x-show="currentSlide === index" 
+                                         :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
+                                         class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                        <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
                                     </div>
-                                </div>
+                                </template>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <button @click="prevSlide()" 
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                            </button>
+                            <button @click="nextSlide()" 
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                            </button>
+
+                            <!-- Dots Indicator -->
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <button @click="direction = 1; currentSlide = index" 
+                                            :class="currentSlide === index ? 'w-8 bg-purple-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                            class="h-2 rounded-full transition-all duration-300">
+                                    </button>
+                                </template>
+                            </div>
+
+                            <!-- Image Counter -->
+                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
                             </div>
                         </div>
+
+                        <!-- Project Info -->
                         <div class="p-8 flex flex-col justify-center">
                             <div class="mb-4">
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30 mb-4">Web Development</span>
                             </div>
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Bolder Landing Page</h3>
+                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Reseller Beeru.</h3>
                             <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                                Restructured and designed core pages, creating interactive elements that put users in control and allowed them to discover the information needed to make decisions with confidence.
+                                Reseller Beeru adalah platform reseller yang di gunakan untuk membeli produk beeru. Reseller Beeru memiliki fitur login, register, dashboard, product, dan pembayaran terintegrasi dengan payment gateway.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-purple-500/10 rounded-lg text-sm text-purple-600 dark:text-purple-400">React</span>
-                                <span class="px-3 py-1 bg-indigo-500/10 rounded-lg text-sm text-indigo-600 dark:text-indigo-400">Tailwind CSS</span>
-                                <span class="px-3 py-1 bg-pink-500/10 rounded-lg text-sm text-pink-600 dark:text-pink-400">JavaScript</span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 45, 32, 0.1); color: #FF2D20; border-color: rgba(255, 45, 32, 0.3);">
+                                    <i class="fab fa-laravel mr-1"></i> Laravel
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
+                                    <i class="fas fa-database mr-1"></i> MySQL
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
+                                    <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
+                                    <i class="fab fa-bootstrap mr-1"></i> Bootstrap
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
+                                    <i class="fab fa-git-alt mr-1"></i> Git
+                                </span>
                             </div>
                             <div class="flex gap-4">
-                                <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
+                                <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
                                     <i class="fas fa-external-link-alt mr-2"></i> View Live
                                 </a>
-                                <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
+                                <!-- <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
                                     <i class="fab fa-github mr-2"></i> Source Code
-                                </a>
+                                </a> -->
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden">
+                <!-- Project 2 with Image Carousel -->
+                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden" 
+                x-data="{ 
+                    currentSlide: 0, 
+                    direction: 1,
+                    slides: [
+                        'assets/img/projects/dci-login.png',
+                        'assets/img/projects/dci-dashboard.png'
+                    ],
+                    nextSlide() {
+                        this.direction = 1;
+                        this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0;
+                    },
+                    prevSlide() {
+                        this.direction = -1;
+                        this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1;
+                    }
+                }">
                     <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Project Info -->
                         <div class="order-2 md:order-1 p-8 flex flex-col justify-center">
                             <div class="mb-4">
                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 mb-4">Full Stack</span>
                             </div>
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Kerja Mantul Education Management</h3>
+                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">ERP Dapur Cokelat</h3>
                             <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
                                 Comprehensive education management system with interactive elements that streamline administrative tasks and enhance the learning experience for students and educators.
                             </p>
                             <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 bg-indigo-500/10 rounded-lg text-sm text-indigo-600 dark:text-indigo-400">Node.js</span>
-                                <span class="px-3 py-1 bg-blue-500/10 rounded-lg text-sm text-blue-600 dark:text-blue-400">Express</span>
-                                <span class="px-3 py-1 bg-green-500/10 rounded-lg text-sm text-green-600 dark:text-green-400">MongoDB</span>
-                                <span class="px-3 py-1 bg-yellow-500/10 rounded-lg text-sm text-yellow-600 dark:text-yellow-400">Vue.js</span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(119, 123, 180, 0.1); color: #777BB4; border-color: rgba(119, 123, 180, 0.3);">
+                                    <i class="fab fa-php mr-1"></i> PHP
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
+                                    <i class="fas fa-database mr-1"></i> MySQL
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
+                                    <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
+                                    <i class="fab fa-bootstrap mr-1"></i> Bootstrap
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
+                                    <i class="fab fa-git-alt mr-1"></i> Git
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(41, 148, 229, 0.1); color: #2496ED; border-color: rgba(41, 148, 229, 0.3);">
+                                    <i class="fab fa-docker mr-1"></i> Docker
+                                </span>
                             </div>
                             <div class="flex gap-4">
-                                <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
+                                <a href="https://dci.dapurcokelat.com/login_form.php" target="_blank" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
                                     <i class="fas fa-external-link-alt mr-2"></i> View Live
                                 </a>
-                                <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
+                                <!-- <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
                                     <i class="fab fa-github mr-2"></i> Source Code
+                                </a> -->
+                            </div>
+                        </div>
+
+                        <!-- Image Carousel -->
+                        <div class="order-1 md:order-2 relative overflow-hidden h-64 md:h-auto bg-gray-100 dark:bg-gray-900">
+                            <!-- Slides Container -->
+                            <div class="relative h-full">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <div x-show="currentSlide === index" 
+                                         :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
+                                         class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                        <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                    </div>
+                                </template>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <button @click="prevSlide()" 
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                            </button>
+                            <button @click="nextSlide()" 
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                            </button>
+
+                            <!-- Dots Indicator -->
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <button @click="direction = 1; currentSlide = index" 
+                                            :class="currentSlide === index ? 'w-8 bg-indigo-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                            class="h-2 rounded-full transition-all duration-300">
+                                    </button>
+                                </template>
+                            </div>
+
+                            <!-- Image Counter -->
+                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 with Image Carousel -->
+                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden" 
+                x-data="{ 
+                    currentSlide: 0, 
+                    direction: 1,
+                    slides: [
+                        'assets/img/projects/login-reseller.png',
+                        'assets/img/projects/dashboard-reseller.png',
+                        'assets/img/projects/product-reseller.png'
+                    ],
+                    nextSlide() {
+                        this.direction = 1;
+                        this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0;
+                    },
+                    prevSlide() {
+                        this.direction = -1;
+                        this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1;
+                    }
+                }">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Image Carousel -->
+                        <div class="relative overflow-hidden h-64 md:h-auto bg-gray-100 dark:bg-gray-900">
+                            <!-- Slides Container -->
+                            <div class="relative h-full">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <div x-show="currentSlide === index" 
+                                         :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
+                                         class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                        <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                    </div>
+                                </template>
+                            </div>
+
+                            <!-- Navigation Buttons -->
+                            <button @click="prevSlide()" 
+                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                            </button>
+                            <button @click="nextSlide()" 
+                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                            </button>
+
+                            <!-- Dots Indicator -->
+                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                <template x-for="(slide, index) in slides" :key="index">
+                                    <button @click="direction = 1; currentSlide = index" 
+                                            :class="currentSlide === index ? 'w-8 bg-purple-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                            class="h-2 rounded-full transition-all duration-300">
+                                    </button>
+                                </template>
+                            </div>
+
+                            <!-- Image Counter -->
+                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                            </div>
+                        </div>
+
+                        <!-- Project Info -->
+                        <div class="p-8 flex flex-col justify-center">
+                            <div class="mb-4">
+                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30 mb-4">Web Development</span>
+                            </div>
+                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Booking System Dapur Cokelat</h3>
+                            <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
+                                Reseller Beeru adalah platform reseller yang di gunakan untuk membeli produk beeru. Reseller Beeru memiliki fitur login, register, dashboard, product, dan pembayaran terintegrasi dengan payment gateway.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 45, 32, 0.1); color: #FF2D20; border-color: rgba(255, 45, 32, 0.3);">
+                                    <i class="fab fa-laravel mr-1"></i> Laravel
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
+                                    <i class="fas fa-database mr-1"></i> MySQL
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
+                                    <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
+                                    <i class="fab fa-bootstrap mr-1"></i> Bootstrap
+                                </span>
+                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
+                                    <i class="fab fa-git-alt mr-1"></i> Git
+                                </span>
+                            </div>
+                            <div class="flex gap-4">
+                                <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
+                                    <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                </a>
+                                <!-- <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
+                                    <i class="fab fa-github mr-2"></i> Source Code
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications & Training -->
+    <section id="certifications" class="py-20 bg-gray-50 dark:bg-gray-900/50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+                    Certifications & <span class="gradient-text">Training</span>
+                </h2>
+                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full"></div>
+                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+                    Continuous learning journey to stay updated with the latest technologies and best practices.
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <!-- Certifications Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    <!-- Training 1 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Design & Programming with SQL</h3>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm">Digitalent Scholarship</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                                Program pelatihan komprehensif yang mencakup prinsip-prinsip desain database, pemrograman SQL, dan teknik optimasi query untuk pengembangan aplikasi database yang efisien.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Issued: Dec 2023</span>
+                                <a href="https://drive.google.com/file/d/1GK1jCp7sYoNJC2onJ35TdsyRDOCbKUvJ/view?usp=sharing" target="_blank" class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
                         </div>
-                        <div class="order-1 md:order-2 relative overflow-hidden h-64 md:h-auto">
-                            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-blue-600/20 group-hover:from-indigo-500/30 group-hover:to-blue-600/30 transition-all duration-300">
-                                <div class="flex items-center justify-center h-full">
-                                    <div class="text-center p-8">
-                                        <i class="fas fa-laptop-code text-6xl text-indigo-600 dark:text-indigo-400 mb-4"></i>
-                                        <p class="text-gray-900 dark:text-white text-lg font-semibold">Project Screenshot</p>
-                                    </div>
+                    </div>
+
+                    <!-- Certification 1 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-server text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Design</h3>
+                                    <p class="text-orange-600 dark:text-orange-400 font-semibold text-sm">Oracle Academy</p>
                                 </div>
                             </div>
-                </div>
-            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                                Sertifikasi profesional dalam prinsip-prinsip desain database, pemodelan data, dan arsitektur database Oracle untuk pengembangan sistem database enterprise.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Issued: Jul 2023</span>
+                                <a href="https://drive.google.com/file/d/1jg2Bef9CmtLCz1SeYk56feUhzqBOTqcC/view?usp=sharing" target="_blank" class="text-orange-600 dark:text-orange-400 hover:text-orange-500 dark:hover:text-orange-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certification 2 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-terminal text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Programming with SQL</h3>
+                                    <p class="text-green-600 dark:text-green-400 font-semibold text-sm">Oracle Academy</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                                Sertifikasi profesional dalam pemrograman SQL, query database, dan pengembangan database Oracle untuk membangun aplikasi database yang robust dan scalable.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Ags 2023</span>
+                                <a href="https://drive.google.com/file/d/1Q8dy2rDLK_pc0DJDcRbzFKHGiwFlFXlA/view?usp=sharing" target="_blank" class="text-green-600 dark:text-green-400 hover:text-green-500 dark:hover:text-green-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certification 3 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-medal text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Junior Web Developer</h3>
+                                    <p class="text-purple-600 dark:text-purple-400 font-semibold text-sm">BNSP</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                                Sertifikasi kompetensi nasional untuk Junior Web Developer yang mencakup standar pengembangan web, best practices, dan kompetensi teknis sesuai standar industri Indonesia.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Issued: May 2023</span>
+                                <a href="https://drive.google.com/file/d/1PmRNd53mJpND07qsi8Rl-xrisd-a7LlH/view?usp=drive_link" target="_blank" class="text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Training 2 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-indigo-500/10 to-blue-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-laptop-code text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Junior Web Developer</h3>
+                                    <p class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm">Digitalent Scholarship</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                                Program pelatihan komprehensif yang mencakup dasar-dasar pengembangan web, HTML, CSS, JavaScript, dan framework modern untuk membangun aplikasi web yang interaktif dan responsif.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Okt 2023</span>
+                                <a href="https://drive.google.com/file/d/1kr9wpK-rt3CxKC_e8_3eMEEJhXjWL0l4/view?usp=drive_link" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Training 3 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-teal-500/10 to-cyan-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="relative z-10">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-code text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Junior Web Developer</h3>
+                                    <p class="text-teal-600 dark:text-teal-400 font-semibold text-sm">Digitalent Scholarship</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                                Program pelatihan intensif yang mencakup pengembangan web full-stack, manajemen database, dan praktik pengembangan modern untuk membangun aplikasi web yang lengkap dan profesional.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Des 2021</span>
+                                <a href="https://drive.google.com/file/d/1bU7KhB5G4NZFxolZqP2gmf6KK0pwFxbs/view?usp=sharing" target="_blank" class="text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -760,6 +1218,7 @@
                         <li><a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">About</a></li>
                         <li><a href="#work-experience" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Experience</a></li>
                         <li><a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Projects</a></li>
+                        <li><a href="#certifications" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Certifications</a></li>
                         <li><a href="#snippets" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Snippets</a></li>
                     </ul>
                 </div>
