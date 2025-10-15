@@ -227,7 +227,6 @@
                     <li class="w-full lg:w-auto"><a href="#work-experience" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Experience</a></li>
                     <li class="w-full lg:w-auto"><a href="#projects" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Portfolio</a></li>
                     <li class="w-full lg:w-auto"><a href="#certifications" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Certifications</a></li>
-                    <li class="w-full lg:w-auto"><a href="#snippets" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Snippets</a></li>
                 </ul>
 
             <!-- Toggle Switch -->
@@ -585,7 +584,89 @@
 
 
     <!-- Featured Projects -->
-    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900/50">
+    <section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900/50" x-data="{ 
+        openModal: null, 
+        clickPosition: { x: 0, y: 0 }, 
+        
+        // ===========================================
+        // PROJECT CONFIGURATION - MUDAH DI-EDIT
+        // ===========================================
+        projects: [
+            {
+                id: 'project1',
+                title: 'Reseller Beeru',
+                shortDesc: 'Platform reseller untuk produk Beeru dengan fitur order, tracking, dan komisi.',
+                category: 'Web Development',
+                categoryColor: 'purple',
+                techStack: ['Laravel', 'MySQL', 'JavaScript', 'Bootstrap', 'Git', 'Docker'],
+                images: ['assets/img/projects/login-reseller.png', 'assets/img/projects/dashboard-reseller.png', 'assets/img/projects/product-reseller.png'],
+                liveUrl: 'https://reseller.beeru.id/'
+            },
+            {
+                id: 'project2',
+                title: 'ERP Dapur Cokelat',
+                shortDesc: 'Dashboard untuk monitoring dan analisis data sistem DCI dengan visualisasi real-time.',
+                category: 'Web Development',
+                categoryColor: 'indigo',
+                techStack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'Git'],
+                images: ['assets/img/projects/dci-login.png', 'assets/img/projects/dci-dashboard.png'],
+                liveUrl: 'https://dci.dapurcokelat.com/login_form.php'
+            },
+            {
+                id: 'project3',
+                title: 'Booking System Dapur Cokelat',
+                shortDesc: 'Sistem booking untuk layanan Dapur Cokelat dengan manajemen jadwal dan reservasi.',
+                category: 'Web Development',
+                categoryColor: 'teal',
+                techStack: ['Laravel', 'MySQL', 'JavaScript', 'Bootstrap', 'Git'],
+                images: ['assets/img/projects/booking-dc-login.png', 'assets/img/projects/booking-dc-list.png'],
+                liveUrl: 'https://reseller.beeru.id/'
+            },
+            {
+                id: 'project4',
+                title: 'Delivery System Dapur Cokelat',
+                shortDesc: 'Sistem delivery untuk mengelola pengantaran produk dengan tracking real-time.',
+                category: 'Full Stack',
+                categoryColor: 'blue',
+                techStack: ['React', 'Node.js', 'MongoDB'],
+                images: ['assets/img/projects/delivery-login.png', 'assets/img/projects/delivery-dashboard.png'],
+                liveUrl: '#'
+            },
+            {
+                id: 'project5',
+                title: 'Project Title 5',
+                shortDesc: 'Short description of your project here. This will be displayed in the card preview.',
+                category: 'Mobile App',
+                categoryColor: 'green',
+                techStack: ['React Native', 'Firebase', 'API'],
+                images: ['assets/img/projects/project5-1.png', 'assets/img/projects/project5-2.png'],
+                liveUrl: '#'
+            },
+            {
+                id: 'project6',
+                title: 'Project Title 6',
+                shortDesc: 'Short description of your project here. This will be displayed in the card preview.',
+                category: 'E-commerce',
+                categoryColor: 'orange',
+                techStack: ['Laravel', 'Vue.js', 'Stripe'],
+                images: ['assets/img/projects/project6-1.png', 'assets/img/projects/project6-2.png', 'assets/img/projects/project6-3.png'],
+                liveUrl: '#'
+            }
+        ],
+        
+        setClickPosition(event) { 
+            this.clickPosition.x = event.clientX; 
+            this.clickPosition.y = event.clientY; 
+        },
+        getTransformOrigin() {
+            // Convert click position to percentage for transform-origin
+            const xPercent = (this.clickPosition.x / window.innerWidth) * 100;
+            const yPercent = (this.clickPosition.y / window.innerHeight) * 100;
+            return `${xPercent}% ${yPercent}%`;
+        },
+        getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); },
+        getProjectById(id) { return this.projects.find(p => p.id === id); }
+    }">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -597,299 +678,1576 @@
                 </p>
             </div>
 
-            <div class="max-w-6xl mx-auto space-y-12">
-                <!-- Project 1 with Image Carousel -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden" 
-                x-data="{ 
-                    currentSlide: 0, 
-                    direction: 1,
-                    slides: [
-                        'assets/img/projects/login-reseller.png',
-                        'assets/img/projects/dashboard-reseller.png',
-                        'assets/img/projects/product-reseller.png'
-                    ],
-                    nextSlide() {
-                        this.direction = 1;
-                        this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0;
-                    },
-                    prevSlide() {
-                        this.direction = -1;
-                        this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1;
-                    }
-                }">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Image Carousel -->
-                        <div class="relative overflow-hidden h-64 md:h-auto bg-gray-100 dark:bg-gray-900">
-                            <!-- Slides Container -->
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic Project Cards -->
+                <template x-for="project in projects" :key="project.id">
+                    <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                         @click="setClickPosition($event); openModal = project.id"
+                         x-data="{ 
+                             currentSlide: 0, 
+                             direction: 1,
+                             slides: project.images,
+                             nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                             prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
+                             getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
+                         }">
+                        <!-- Project Image -->
+                        <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
                             <div class="relative h-full">
                                 <template x-for="(slide, index) in slides" :key="index">
                                     <div x-show="currentSlide === index" 
-                                         :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
                                          class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                        <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        <img :src="getImageSrc(slide)" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     </div>
                                 </template>
                             </div>
-
-                            <!-- Navigation Buttons -->
-                            <button @click="prevSlide()" 
-                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
-                                <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
-                            </button>
-                            <button @click="nextSlide()" 
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
-                                <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
-                            </button>
-
-                            <!-- Dots Indicator -->
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <button @click="direction = 1; currentSlide = index" 
-                                            :class="currentSlide === index ? 'w-8 bg-purple-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
-                                            class="h-2 rounded-full transition-all duration-300">
-                                    </button>
-                                </template>
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <i class="fas fa-eye text-white text-3xl"></i>
+                                </div>
                             </div>
-
+                            <!-- Tech Badge -->
+                            <div class="absolute top-3 left-3">
+                                <span class="px-2 py-1 text-white text-xs font-semibold rounded-lg" 
+                                      :class="`bg-${$parent.getProjectById(project.id).categoryColor}-500/90`"
+                                      x-text="project.category"></span>
+                            </div>
                             <!-- Image Counter -->
-                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
-                                <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                            <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                                <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
                             </div>
                         </div>
-
+                        
                         <!-- Project Info -->
-                        <div class="p-8 flex flex-col justify-center">
-                            <div class="mb-4">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30 mb-4">Web Development</span>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors"
+                                :class="`group-hover:text-${project.categoryColor}-600 dark:group-hover:text-${project.categoryColor}-400`"
+                                x-text="project.title"></h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2" x-text="project.shortDesc"></p>
+                            <div class="flex flex-wrap gap-1 mb-4">
+                                <template x-for="tech in project.techStack.slice(0, 3)" :key="tech">
+                                    <span class="px-2 py-1 text-xs rounded" 
+                                          :class="`bg-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-100 text-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-600 dark:bg-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-900/30 dark:text-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-400`"
+                                          x-text="tech"></span>
+                                </template>
                             </div>
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Reseller Beeru.</h3>
-                            <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                                Reseller Beeru adalah platform reseller yang di gunakan untuk membeli produk beeru. Reseller Beeru memiliki fitur login, register, dashboard, product, dan pembayaran terintegrasi dengan payment gateway.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 45, 32, 0.1); color: #FF2D20; border-color: rgba(255, 45, 32, 0.3);">
-                                    <i class="fab fa-laravel mr-1"></i> Laravel
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
-                                    <i class="fas fa-database mr-1"></i> MySQL
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
-                                    <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
-                                    <i class="fab fa-bootstrap mr-1"></i> Bootstrap
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
-                                    <i class="fab fa-git-alt mr-1"></i> Git
-                                </span>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                                <i class="fas fa-arrow-right transition-transform"
+                                   :class="`text-${project.categoryColor}-600 dark:text-${project.categoryColor}-400 group-hover:translate-x-1`"></i>
                             </div>
-                            <div class="flex gap-4">
-                                <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
-                                    <i class="fas fa-external-link-alt mr-2"></i> View Live
-                                </a>
-                                <!-- <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
-                                    <i class="fab fa-github mr-2"></i> Source Code
-                                </a> -->
+                        </div>
+                    </div>
+                </template>
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project1'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/login-reseller.png', 'assets/img/projects/dashboard-reseller.png', 'assets/img/projects/product-reseller.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
                             </div>
+                        </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-purple-500/90 text-white text-xs font-semibold rounded-lg">Web Dev</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                            Reseller Beeru.
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Platform reseller untuk membeli produk beeru dengan fitur login, dashboard, product, dan payment gateway.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">Laravel</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-purple-600 dark:text-purple-400 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 2 with Image Carousel -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden" 
-                x-data="{ 
-                    currentSlide: 0, 
-                    direction: 1,
-                    slides: [
-                        'assets/img/projects/dci-login.png',
-                        'assets/img/projects/dci-dashboard.png'
-                    ],
-                    nextSlide() {
-                        this.direction = 1;
-                        this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0;
-                    },
-                    prevSlide() {
-                        this.direction = -1;
-                        this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1;
-                    }
-                }">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Project Info -->
-                        <div class="order-2 md:order-1 p-8 flex flex-col justify-center">
-                            <div class="mb-4">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 mb-4">Full Stack</span>
-                            </div>
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">ERP Dapur Cokelat</h3>
-                            <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                                Comprehensive education management system with interactive elements that streamline administrative tasks and enhance the learning experience for students and educators.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(119, 123, 180, 0.1); color: #777BB4; border-color: rgba(119, 123, 180, 0.3);">
-                                    <i class="fab fa-php mr-1"></i> PHP
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
-                                    <i class="fas fa-database mr-1"></i> MySQL
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
-                                    <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
-                                    <i class="fab fa-bootstrap mr-1"></i> Bootstrap
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
-                                    <i class="fab fa-git-alt mr-1"></i> Git
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(41, 148, 229, 0.1); color: #2496ED; border-color: rgba(41, 148, 229, 0.3);">
-                                    <i class="fab fa-docker mr-1"></i> Docker
-                                </span>
-                            </div>
-                            <div class="flex gap-4">
-                                <a href="https://dci.dapurcokelat.com/login_form.php" target="_blank" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
-                                    <i class="fas fa-external-link-alt mr-2"></i> View Live
-                                </a>
-                                <!-- <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
-                                    <i class="fab fa-github mr-2"></i> Source Code
-                                </a> -->
+                <!-- Project 2 -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project2'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/dci-login.png', 'assets/img/projects/dci-dashboard.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
                             </div>
                         </div>
-
-                        <!-- Image Carousel -->
-                        <div class="order-1 md:order-2 relative overflow-hidden h-64 md:h-auto bg-gray-100 dark:bg-gray-900">
-                            <!-- Slides Container -->
-                            <div class="relative h-full">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <div x-show="currentSlide === index" 
-                                         :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
-                                         class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                        <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
-                                    </div>
-                                </template>
-                            </div>
-
-                            <!-- Navigation Buttons -->
-                            <button @click="prevSlide()" 
-                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
-                                <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
-                            </button>
-                            <button @click="nextSlide()" 
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
-                                <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
-                            </button>
-
-                            <!-- Dots Indicator -->
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <button @click="direction = 1; currentSlide = index" 
-                                            :class="currentSlide === index ? 'w-8 bg-indigo-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
-                                            class="h-2 rounded-full transition-all duration-300">
-                                    </button>
-                                </template>
-                            </div>
-
-                            <!-- Image Counter -->
-                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
-                                <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
-                            </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-indigo-500/90 text-white text-xs font-semibold rounded-lg">Full Stack</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            ERP Dapur Cokelat tt
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Comprehensive education management system with interactive elements for streamlined administrative tasks.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">PHP</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Docker</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 with Image Carousel -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-3xl overflow-hidden" 
-                x-data="{ 
-                    currentSlide: 0, 
-                    direction: 1,
-                    slides: [
-                        'assets/img/projects/login-reseller.png',
-                        'assets/img/projects/dashboard-reseller.png',
-                        'assets/img/projects/product-reseller.png'
-                    ],
-                    nextSlide() {
-                        this.direction = 1;
-                        this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0;
-                    },
-                    prevSlide() {
-                        this.direction = -1;
-                        this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1;
-                    }
-                }">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <!-- Image Carousel -->
-                        <div class="relative overflow-hidden h-64 md:h-auto bg-gray-100 dark:bg-gray-900">
-                            <!-- Slides Container -->
-                            <div class="relative h-full">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <div x-show="currentSlide === index" 
-                                         :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
-                                         class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                        <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
-                                    </div>
-                                </template>
-                            </div>
-
-                            <!-- Navigation Buttons -->
-                            <button @click="prevSlide()" 
-                                    class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
-                                <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
-                            </button>
-                            <button @click="nextSlide()" 
-                                    class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
-                                <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
-                            </button>
-
-                            <!-- Dots Indicator -->
-                            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <button @click="direction = 1; currentSlide = index" 
-                                            :class="currentSlide === index ? 'w-8 bg-purple-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
-                                            class="h-2 rounded-full transition-all duration-300">
-                                    </button>
-                                </template>
-                            </div>
-
-                            <!-- Image Counter -->
-                            <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
-                                <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                <!-- Project 3 -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project3'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/booking-dc-login.png', 'assets/img/projects/booking-dc-list.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
+                         getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
                             </div>
                         </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-teal-500/90 text-white text-xs font-semibold rounded-lg">Web Dev</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                            Booking System Dapur Cokelat
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Platform booking system untuk manajemen reservasi dengan fitur dashboard dan payment gateway terintegrasi.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">Laravel</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-teal-600 dark:text-teal-400 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Project Info -->
-                        <div class="p-8 flex flex-col justify-center">
-                            <div class="mb-4">
-                                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30 mb-4">Web Development</span>
+                <!-- Project 4 - Template -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project4'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/delivery-login.png', 'assets/img/projects/delivery-dashboard.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
+                         getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="getImageSrc(slide)" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
                             </div>
-                            <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Booking System Dapur Cokelat</h3>
-                            <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                                Reseller Beeru adalah platform reseller yang di gunakan untuk membeli produk beeru. Reseller Beeru memiliki fitur login, register, dashboard, product, dan pembayaran terintegrasi dengan payment gateway.
-                            </p>
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 45, 32, 0.1); color: #FF2D20; border-color: rgba(255, 45, 32, 0.3);">
-                                    <i class="fab fa-laravel mr-1"></i> Laravel
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
-                                    <i class="fas fa-database mr-1"></i> MySQL
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
-                                    <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
-                                    <i class="fab fa-bootstrap mr-1"></i> Bootstrap
-                                </span>
-                                <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
-                                    <i class="fab fa-git-alt mr-1"></i> Git
-                                </span>
+                        </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-blue-500/90 text-white text-xs font-semibold rounded-lg">Full Stack</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            Delivery System Dapur Cokelat
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Short description of your project here. This will be displayed in the card preview.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">React</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Node.js</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MongoDB</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 - Template -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project5'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/project5-1.png', 'assets/img/projects/project5-2.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
                             </div>
-                            <div class="flex gap-4">
-                                <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors">
-                                    <i class="fas fa-external-link-alt mr-2"></i> View Live
-                                </a>
-                                <!-- <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors">
-                                    <i class="fab fa-github mr-2"></i> Source Code
-                                </a> -->
+                        </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-green-500/90 text-white text-xs font-semibold rounded-lg">Mobile App</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
+                            Project Title 5
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Short description of your project here. This will be displayed in the card preview.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">React Native</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">Firebase</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">API</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-green-600 dark:text-green-400 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 - Template -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project6'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/project6-1.png', 'assets/img/projects/project6-2.png', 'assets/img/projects/project6-3.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-orange-500/90 text-white text-xs font-semibold rounded-lg">E-commerce</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+                            Project Title 6
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Short description of your project here. This will be displayed in the card preview.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">Laravel</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Vue.js</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Stripe</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-orange-600 dark:text-orange-400 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 - Template -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project7'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/project7-1.png', 'assets/img/projects/project7-2.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-pink-500/90 text-white text-xs font-semibold rounded-lg">UI/UX</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
+                            Project Title 7
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Short description of your project here. This will be displayed in the card preview.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Figma</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">Adobe XD</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Prototype</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-pink-600 dark:text-pink-400 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 - Template -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project8'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/project8-1.png', 'assets/img/projects/project8-2.png', 'assets/img/projects/project8-3.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-red-500/90 text-white text-xs font-semibold rounded-lg">API</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
+                            Project Title 8
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Short description of your project here. This will be displayed in the card preview.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Express.js</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MongoDB</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">JWT</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-red-600 dark:text-red-400 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 - Template -->
+                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
+                     @click="setClickPosition($event); openModal = 'project9'"
+                     x-data="{ 
+                         currentSlide: 0, 
+                         direction: 1,
+                         slides: ['assets/img/projects/project9-1.png', 'assets/img/projects/project9-2.png'],
+                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                     }">
+                    <!-- Project Image -->
+                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
+                        <div class="relative h-full">
+                            <template x-for="(slide, index) in slides" :key="index">
+                                <div x-show="currentSlide === index" 
+                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                </div>
+                            </template>
+                        </div>
+                        <!-- Overlay -->
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <i class="fas fa-eye text-white text-3xl"></i>
+                            </div>
+                        </div>
+                        <!-- Tech Badge -->
+                        <div class="absolute top-3 left-3">
+                            <span class="px-2 py-1 bg-gray-500/90 text-white text-xs font-semibold rounded-lg">Desktop</span>
+                        </div>
+                        <!-- Image Counter -->
+                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
+                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Project Info -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
+                            Project Title 9
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                            Short description of your project here. This will be displayed in the card preview.
+                        </p>
+                        <div class="flex flex-wrap gap-1 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Electron</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Node.js</span>
+                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">SQLite</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
+                            <i class="fas fa-arrow-right text-gray-600 dark:text-gray-400 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Detail Modals -->
+            <!-- Modal 1: Reseller Beeru -->
+            <div x-show="openModal === 'project1'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-init="
+                     const clickX = $parent.clickPosition.x;
+                     const clickY = $parent.clickPosition.y;
+                     const xPercent = (clickX / window.innerWidth) * 100;
+                     const yPercent = (clickY / window.innerHeight) * 100;
+                     $nextTick(() => {
+                         const modalDiv = $el.querySelector('.modal-content');
+                         if (modalDiv) modalDiv.style.transformOrigin = xPercent + '% ' + yPercent + '%';
+                     });
+                 "
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/login-reseller.png', 'assets/img/projects/dashboard-reseller.png', 'assets/img/projects/product-reseller.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                 }"
+                 @click.away="openModal = null">
+                <div class="modal-content bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mx-auto transform transition-all duration-300 scale-95" 
+                     @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30 mb-2">Web Development</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Reseller Beeru.</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-purple-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Reseller Beeru adalah platform reseller yang digunakan untuk membeli produk beeru. Platform ini memiliki fitur login, register, dashboard, product, dan pembayaran terintegrasi dengan payment gateway.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 45, 32, 0.1); color: #FF2D20; border-color: rgba(255, 45, 32, 0.3);">
+                                            <i class="fab fa-laravel mr-1"></i> Laravel
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
+                                            <i class="fas fa-database mr-1"></i> MySQL
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
+                                            <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
+                                            <i class="fab fa-bootstrap mr-1"></i> Bootstrap
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
+                                            <i class="fab fa-git-alt mr-1"></i> Git
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- Modal 2: ERP Dapur Cokelat -->
+            <div x-show="openModal === 'project2'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/dci-login.png', 'assets/img/projects/dci-dashboard.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 mb-2">Full Stack</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">ERP Dapur Cokelat</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-indigo-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Comprehensive education management system with interactive elements that streamline administrative tasks and enhance the learning experience for students and educators.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(119, 123, 180, 0.1); color: #777BB4; border-color: rgba(119, 123, 180, 0.3);">
+                                            <i class="fab fa-php mr-1"></i> PHP
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
+                                            <i class="fas fa-database mr-1"></i> MySQL
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
+                                            <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
+                                            <i class="fab fa-bootstrap mr-1"></i> Bootstrap
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
+                                            <i class="fab fa-git-alt mr-1"></i> Git
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(41, 148, 229, 0.1); color: #2496ED; border-color: rgba(41, 148, 229, 0.3);">
+                                            <i class="fab fa-docker mr-1"></i> Docker
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="https://dci.dapurcokelat.com/login_form.php" target="_blank" class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 3: Booking System Dapur Cokelat -->
+            <div x-show="openModal === 'project3'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/booking-dc-login.png', 'assets/img/projects/booking-dc-list.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
+                     getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/30 mb-2">Web Development</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Booking System Dapur Cokelat</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-teal-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Platform booking system untuk manajemen reservasi dengan fitur dashboard dan payment gateway terintegrasi. Sistem ini memungkinkan pelanggan untuk melakukan booking dengan mudah dan efisien.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 45, 32, 0.1); color: #FF2D20; border-color: rgba(255, 45, 32, 0.3);">
+                                            <i class="fab fa-laravel mr-1"></i> Laravel
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(68, 121, 161, 0.1); color: #4479A1; border-color: rgba(68, 121, 161, 0.3);">
+                                            <i class="fas fa-database mr-1"></i> MySQL
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
+                                            <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">JavaScript</span>
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(86, 61, 124, 0.1); color: #7952B3; border-color: rgba(86, 61, 124, 0.3);">
+                                            <i class="fab fa-bootstrap mr-1"></i> Bootstrap
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(240, 80, 51, 0.1); color: #F05032; border-color: rgba(240, 80, 51, 0.3);">
+                                            <i class="fab fa-git-alt mr-1"></i> Git
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 4: Project 4 Template -->
+            <div x-show="openModal === 'project4'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/delivery-login.png', 'assets/img/projects/delivery-dashboard.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
+                     getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/30 mb-2">Full Stack</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 4</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="getImageSrc(slide)" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-blue-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Detailed description of your project here. Explain what the project does, its main features, challenges faced, and what you learned from building it.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(97, 218, 251, 0.1); color: #61DAFB; border-color: rgba(97, 218, 251, 0.3);">
+                                            <i class="fab fa-react mr-1"></i> React
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(51, 153, 51, 0.1); color: #339933; border-color: rgba(51, 153, 51, 0.3);">
+                                            <i class="fab fa-node-js mr-1"></i> Node.js
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(71, 162, 72, 0.1); color: #47A248; border-color: rgba(71, 162, 72, 0.3);">
+                                            <i class="fas fa-leaf mr-1"></i> MongoDB
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                    </a>
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
+                                        <i class="fab fa-github mr-2"></i> Source Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 5: Project 5 Template -->
+            <div x-show="openModal === 'project5'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/project5-1.png', 'assets/img/projects/project5-2.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/30 mb-2">Mobile App</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 5</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-green-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Detailed description of your mobile app project here. Explain what the app does, its main features, challenges faced, and what you learned from building it.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(97, 218, 251, 0.1); color: #61DAFB; border-color: rgba(97, 218, 251, 0.3);">
+                                            <i class="fab fa-react mr-1"></i> React Native
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 152, 0, 0.1); color: #FF9800; border-color: rgba(255, 152, 0, 0.3);">
+                                            <i class="fas fa-fire mr-1"></i> Firebase
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(247, 223, 30, 0.2); border-color: rgba(247, 223, 30, 0.3);">
+                                            <i class="fab fa-js mr-1" style="color: #000;"></i> <span style="color: #000;">API</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                    </a>
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
+                                        <i class="fab fa-github mr-2"></i> Source Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 6: Project 6 Template -->
+            <div x-show="openModal === 'project6'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/project6-1.png', 'assets/img/projects/project6-2.png', 'assets/img/projects/project6-3.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 mb-2">E-commerce</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 6</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-orange-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Detailed description of your e-commerce project here. Explain what the project does, its main features, challenges faced, and what you learned from building it.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 45, 32, 0.1); color: #FF2D20; border-color: rgba(255, 45, 32, 0.3);">
+                                            <i class="fab fa-laravel mr-1"></i> Laravel
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(66, 184, 131, 0.1); color: #42B883; border-color: rgba(66, 184, 131, 0.3);">
+                                            <i class="fab fa-vuejs mr-1"></i> Vue.js
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(101, 126, 242, 0.1); color: #657EF2; border-color: rgba(101, 126, 242, 0.3);">
+                                            <i class="fab fa-stripe mr-1"></i> Stripe
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                    </a>
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
+                                        <i class="fab fa-github mr-2"></i> Source Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 7: Project 7 Template -->
+            <div x-show="openModal === 'project7'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/project7-1.png', 'assets/img/projects/project7-2.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-pink-500/10 text-pink-600 dark:text-pink-400 border border-pink-500/30 mb-2">UI/UX</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 7</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-pink-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Detailed description of your UI/UX design project here. Explain what the project does, its main features, challenges faced, and what you learned from building it.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(162, 84, 247, 0.1); color: #A254F7; border-color: rgba(162, 84, 247, 0.3);">
+                                            <i class="fab fa-figma mr-1"></i> Figma
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(255, 0, 255, 0.1); color: #FF00FF; border-color: rgba(255, 0, 255, 0.3);">
+                                            <i class="fab fa-adobe mr-1"></i> Adobe XD
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(52, 199, 74, 0.1); color: #34C74E; border-color: rgba(52, 199, 74, 0.3);">
+                                            <i class="fas fa-cube mr-1"></i> Prototype
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                    </a>
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
+                                        <i class="fab fa-dribbble mr-2"></i> View Design
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 8: Project 8 Template -->
+            <div x-show="openModal === 'project8'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/project8-1.png', 'assets/img/projects/project8-2.png', 'assets/img/projects/project8-3.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/30 mb-2">API</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 8</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-red-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Detailed description of your API project here. Explain what the project does, its main features, challenges faced, and what you learned from building it.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(51, 153, 51, 0.1); color: #339933; border-color: rgba(51, 153, 51, 0.3);">
+                                            <i class="fab fa-node-js mr-1"></i> Express.js
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(71, 162, 72, 0.1); color: #47A248; border-color: rgba(71, 162, 72, 0.3);">
+                                            <i class="fas fa-leaf mr-1"></i> MongoDB
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(239, 68, 68, 0.1); color: #EF4444; border-color: rgba(239, 68, 68, 0.3);">
+                                            <i class="fas fa-key mr-1"></i> JWT
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold">
+                                        <i class="fas fa-external-link-alt mr-2"></i> API Docs
+                                    </a>
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
+                                        <i class="fab fa-github mr-2"></i> Source Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal 9: Project 9 Template -->
+            <div x-show="openModal === 'project9'" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0"
+                 x-transition:enter-end="opacity-100"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100"
+                 x-transition:leave-end="opacity-0"
+                 class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+                 style="display: none;"
+                 @click="openModal = null"
+                 x-data="{ 
+                     currentSlide: 0, 
+                     direction: 1,
+                     slides: ['assets/img/projects/project9-1.png', 'assets/img/projects/project9-2.png'],
+                     nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
+                     prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
+                 }"
+                 @click.away="openModal = null">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" @click.stop>
+                    <!-- Modal Header -->
+                    <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+                        <div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gray-500/10 text-gray-600 dark:text-gray-400 border border-gray-500/30 mb-2">Desktop</span>
+                            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 9</h2>
+                        </div>
+                        <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
+                            <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content -->
+                    <div class="p-6">
+                        <div class="grid lg:grid-cols-2 gap-8">
+                            <!-- Image Carousel -->
+                            <div class="relative overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-900" style="height: 400px;">
+                                <div class="relative h-full">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <div x-show="currentSlide === index" 
+                                             class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                                            <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="max-w-full max-h-full object-contain">
+                                        </div>
+                                    </template>
+                                </div>
+
+                                <!-- Navigation Buttons -->
+                                <button @click="prevSlide()" 
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-left text-gray-900 dark:text-white"></i>
+                                </button>
+                                <button @click="nextSlide()" 
+                                        class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 shadow-lg hover:scale-110 z-10">
+                                    <i class="fas fa-chevron-right text-gray-900 dark:text-white"></i>
+                                </button>
+
+                                <!-- Dots Indicator -->
+                                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                                    <template x-for="(slide, index) in slides" :key="index">
+                                        <button @click="direction = 1; currentSlide = index" 
+                                                :class="currentSlide === index ? 'w-8 bg-gray-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                class="h-2 rounded-full transition-all duration-300">
+                                        </button>
+                                    </template>
+                                </div>
+
+                                <!-- Image Counter -->
+                                <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm z-10">
+                                    <span x-text="currentSlide + 1"></span> / <span x-text="slides.length"></span>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="space-y-6">
+                                <div>
+                                    <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
+                                        Detailed description of your desktop application project here. Explain what the project does, its main features, challenges faced, and what you learned from building it.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(54, 184, 179, 0.1); color: #36B8B3; border-color: rgba(54, 184, 179, 0.3);">
+                                            <i class="fab fa-electron mr-1"></i> Electron
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(51, 153, 51, 0.1); color: #339933; border-color: rgba(51, 153, 51, 0.3);">
+                                            <i class="fab fa-node-js mr-1"></i> Node.js
+                                        </span>
+                                        <span class="px-3 py-1 rounded-lg text-sm font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(3, 155, 229, 0.1); color: #039BE5; border-color: rgba(3, 155, 229, 0.3);">
+                                            <i class="fas fa-database mr-1"></i> SQLite
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4">
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
+                                        <i class="fas fa-download mr-2"></i> Download
+                                    </a>
+                                    <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors font-semibold">
+                                        <i class="fab fa-github mr-2"></i> Source Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
             </div>
         </div>
     </section>
@@ -1064,134 +2422,6 @@
         </div>
     </section>
 
-    <!-- Code Snippets -->
-    <section id="snippets" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-                    Code <span class="gradient-text">Snippets</span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full"></div>
-                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
-                    Quick start templates and boilerplates to accelerate your development workflow.
-                </p>
-            </div>
-
-            <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Snippet 1 -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-indigo-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-file-code text-white text-xl"></i>
-                            </div>
-                            <span class="px-3 py-1 bg-purple-500/10 rounded-lg text-xs text-purple-600 dark:text-purple-400 font-semibold border border-purple-500/30">Starter Kit</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Next.js Starter</h3>
-                        <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                            A dead simple starter template for Next.js projects with best practices and modern setup.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-purple-500/10 rounded-lg text-xs text-purple-600 dark:text-purple-400">Next.js</span>
-                            <span class="px-3 py-1 bg-indigo-500/10 rounded-lg text-xs text-indigo-600 dark:text-indigo-400">TypeScript</span>
-                            <span class="px-3 py-1 bg-blue-500/10 rounded-lg text-xs text-blue-600 dark:text-blue-400">Tailwind</span>
-                        </div>
-                        <a href="#" class="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 font-semibold transition-colors group">
-                            <i class="fab fa-github mr-2"></i> View on GitHub
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Snippet 2 -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-500/10 to-blue-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-code text-white text-xl"></i>
-                            </div>
-                            <span class="px-3 py-1 bg-indigo-500/10 rounded-lg text-xs text-indigo-600 dark:text-indigo-400 font-semibold border border-indigo-500/30">Boilerplate</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Frontend Starter Kit</h3>
-                        <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                            A dead simple HTML5 boilerplate with CSS/HTML minification and SEO optimization setup.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-orange-500/10 rounded-lg text-xs text-orange-600 dark:text-orange-400">HTML5</span>
-                            <span class="px-3 py-1 bg-blue-500/10 rounded-lg text-xs text-blue-600 dark:text-blue-400">CSS3</span>
-                            <span class="px-3 py-1 bg-yellow-500/10 rounded-lg text-xs text-yellow-600 dark:text-yellow-400">JavaScript</span>
-                        </div>
-                        <a href="#" class="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 font-semibold transition-colors group">
-                            <i class="fab fa-github mr-2"></i> View on GitHub
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Snippet 3 -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                <i class="fas fa-terminal text-white text-xl"></i>
-                            </div>
-                            <span class="px-3 py-1 bg-green-500/10 rounded-lg text-xs text-green-600 dark:text-green-400 font-semibold border border-green-500/30">API</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">Express API Template</h3>
-                        <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                            RESTful API template with Express.js, MongoDB, and authentication ready to go.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-green-500/10 rounded-lg text-xs text-green-600 dark:text-green-400">Node.js</span>
-                            <span class="px-3 py-1 bg-emerald-500/10 rounded-lg text-xs text-emerald-600 dark:text-emerald-400">Express</span>
-                            <span class="px-3 py-1 bg-teal-500/10 rounded-lg text-xs text-teal-600 dark:text-teal-400">MongoDB</span>
-                        </div>
-                        <a href="#" class="inline-flex items-center text-green-600 dark:text-green-400 hover:text-green-500 dark:hover:text-green-300 font-semibold transition-colors group">
-                            <i class="fab fa-github mr-2"></i> View on GitHub
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Snippet 4 -->
-                <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500/10 to-rose-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                <i class="fab fa-react text-white text-xl"></i>
-                            </div>
-                            <span class="px-3 py-1 bg-pink-500/10 rounded-lg text-xs text-pink-600 dark:text-pink-400 font-semibold border border-pink-500/30">Component</span>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">React Component Library</h3>
-                        <p class="text-gray-700 dark:text-gray-400 mb-6 leading-relaxed">
-                            Reusable React components with TypeScript and comprehensive documentation.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-pink-500/10 rounded-lg text-xs text-pink-600 dark:text-pink-400">React</span>
-                            <span class="px-3 py-1 bg-blue-500/10 rounded-lg text-xs text-blue-600 dark:text-blue-400">TypeScript</span>
-                            <span class="px-3 py-1 bg-purple-500/10 rounded-lg text-xs text-purple-600 dark:text-purple-400">Storybook</span>
-                        </div>
-                        <a href="#" class="inline-flex items-center text-pink-600 dark:text-pink-400 hover:text-pink-500 dark:hover:text-pink-300 font-semibold transition-colors group">
-                            <i class="fab fa-github mr-2"></i> View on GitHub
-                            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-            </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 py-12">
@@ -1219,7 +2449,6 @@
                         <li><a href="#work-experience" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Experience</a></li>
                         <li><a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Projects</a></li>
                         <li><a href="#certifications" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Certifications</a></li>
-                        <li><a href="#snippets" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Snippets</a></li>
                     </ul>
                 </div>
 
