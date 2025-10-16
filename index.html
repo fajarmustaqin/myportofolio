@@ -61,7 +61,7 @@
 
         /* Gradient Text */
         .gradient-text {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #3B82F6 0%, #10B981 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -204,7 +204,7 @@
     <header class="fixed top-0 left-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 shadow-lg dark:shadow-2xl p-4 sm:p-5 z-50" x-data="{ open: false }">
         <div class="container mx-auto flex flex-wrap justify-between items-center">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg flex items-center justify-center">
                     <span class="text-white font-bold text-xl">F</span>
                 </div>
                 <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 dark:text-white">Fajar <span class="gradient-text">Mustaqin</span></h1>
@@ -222,18 +222,18 @@
             <!-- Nav Links -->
             <nav :class="open ? 'flex' : 'hidden'" class="w-full lg:w-auto lg:flex mt-4 lg:mt-0 flex-col lg:flex-row items-center lg:space-x-1">
                 <ul class="flex flex-col lg:flex-row lg:space-x-1 space-y-2 lg:space-y-0 text-sm font-medium w-full lg:w-auto text-gray-700 dark:text-gray-300">
-                    <li class="w-full lg:w-auto"><a href="#home" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Home</a></li>
-                    <li class="w-full lg:w-auto"><a href="#about" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">About</a></li>
-                    <li class="w-full lg:w-auto"><a href="#work-experience" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Experience</a></li>
-                    <li class="w-full lg:w-auto"><a href="#projects" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Portfolio</a></li>
-                    <li class="w-full lg:w-auto"><a href="#certifications" class="block px-4 py-2 rounded-lg hover:bg-purple-500/10 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300">Certifications</a></li>
+                    <li class="w-full lg:w-auto"><a href="#home" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Home</a></li>
+                    <li class="w-full lg:w-auto"><a href="#about" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">About</a></li>
+                    <li class="w-full lg:w-auto"><a href="#work-experience" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Experience</a></li>
+                    <li class="w-full lg:w-auto"><a href="#projects" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Portfolio</a></li>
+                    <li class="w-full lg:w-auto"><a href="#certifications" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Certifications</a></li>
                 </ul>
 
             <!-- Toggle Switch -->
                 <div class="flex items-center gap-3 mt-4 lg:mt-0 lg:ml-4">
             <label class="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" value="" class="sr-only peer" id="dark-toggle">
-                        <div class="w-14 h-7 bg-gray-300 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-300 dark:peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-purple-500 peer-checked:to-indigo-600"></div>
+                        <div class="w-14 h-7 bg-gray-300 dark:bg-gray-700 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-blue-500 peer-checked:to-teal-500"></div>
                         <span id="mode-label" class="ml-3 text-sm font-medium text-gray-700 dark:text-gray-300">Dark Mode</span>
             </label>
             </div>
@@ -246,15 +246,15 @@
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Animated Background -->
         <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 dark:bg-purple-500/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-indigo-500/20 dark:bg-indigo-500/20 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
+            <div class="absolute top-20 left-10 w-72 h-72 bg-blue-500/20 dark:bg-blue-500/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-teal-500/20 dark:bg-teal-500/20 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1s;"></div>
             <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-pink-500/10 dark:bg-pink-500/10 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col items-center text-center space-y-8 fade-in">
                 <!-- Badge -->
-                <div class="inline-flex items-center space-x-2 bg-purple-500/10 backdrop-blur-sm border border-purple-500/20 rounded-full px-5 py-2">
+                <div class="inline-flex items-center space-x-2 bg-blue-500/10 backdrop-blur-sm border border-blue-500/20 rounded-full px-5 py-2">
                     <span class="relative flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
@@ -279,14 +279,14 @@
                 <!-- Description -->
                 <p class="max-w-2xl text-lg sm:text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
                     I love learning new technologies, building awesome web applications, 
-                    and collaborating with teams. Expert in <span class="text-purple-600 dark:text-purple-400 font-semibold">PHP</span>, 
-                    <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Laravel</span>, and 
+                    and collaborating with teams. Expert in <span class="text-blue-600 dark:text-blue-400 font-semibold">PHP</span>, 
+                    <span class="text-teal-600 dark:text-teal-400 font-semibold">Laravel</span>, and 
                     <span class="text-pink-600 dark:text-pink-400 font-semibold">Backend Development</span>.
                 </p>
 
                 <!-- CTA Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 mt-8">
-                    <a href="#projects" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-500 to-indigo-600 rounded-xl overflow-hidden shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105">
+                    <a href="#projects" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-500 to-teal-500 rounded-xl overflow-hidden shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 hover:scale-105">
                         <span class="relative z-10 flex items-center">
                             View My Work
                             <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -295,7 +295,7 @@
                         </span>
                     </a>
                     
-                    <a href="#about" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 dark:text-white bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-800 hover:border-purple-500 transition-all duration-300 hover:scale-105">
+                    <a href="#about" class="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-gray-900 dark:text-white bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border-2 border-gray-300 dark:border-gray-700 rounded-xl hover:bg-gray-300 dark:hover:bg-gray-800 hover:border-blue-500 transition-all duration-300 hover:scale-105">
                         About Me
                     </a>
                 </div>
@@ -311,14 +311,14 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                     About <span class="gradient-text">Me</span>
                 </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full"></div>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full"></div>
             </div>
 
             <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
                 <!-- Profile Image -->
                 <div class="flex justify-center md:justify-end">
                     <div class="relative group">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
                         <div class="relative">
                             <img src="assets/img/profile.JPG" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white dark:border-gray-800" alt="Fajar Mustaqin">
                         </div>
@@ -329,11 +329,11 @@
                 <div class="space-y-6 text-center md:text-left">
                     <div class="space-y-4">
                         <h3 class="text-3xl font-bold text-gray-900 dark:text-white">
-                            <span class="text-purple-600 dark:text-purple-400">Professional</span> Web Developer
+                            <span class="text-blue-600 dark:text-blue-400">Professional</span> Web Developer
                         </h3>
                         <p class="text-lg text-gray-700 dark:text-gray-400 leading-relaxed">
-                            Getting <span class="text-purple-600 dark:text-purple-400 font-semibold">Buff +1</span> for learning, 
-                            <span class="text-indigo-600 dark:text-indigo-400 font-semibold">Buff +2</span> for documentation, 
+                            Getting <span class="text-blue-600 dark:text-blue-400 font-semibold">Buff +1</span> for learning, 
+                            <span class="text-teal-600 dark:text-teal-400 font-semibold">Buff +2</span> for documentation, 
                             and <span class="text-pink-600 dark:text-pink-400 font-semibold">more buffs</span> on managing teams.
                         </p>
                         <p class="text-lg text-gray-700 dark:text-gray-400 leading-relaxed">
@@ -347,7 +347,7 @@
                         <span class="px-4 py-2 rounded-lg font-semibold border transition-all duration-300 hover:scale-105" style="background-color: rgba(97, 218, 251, 0.1); color: #61DAFB; border-color: rgba(97, 218, 251, 0.3);">
                             <i class="fab fa-react mr-1"></i> React
                         </span>
-                        <span class="px-4 py-2 bg-purple-500/10 border border-purple-500/30 rounded-lg text-purple-600 dark:text-purple-400 font-semibold hover:bg-purple-500/20 transition-all duration-300 hover:scale-105">
+                        <span class="px-4 py-2 bg-blue-500/10 border border-blue-500/30 rounded-lg text-blue-600 dark:text-blue-400 font-semibold hover:bg-blue-500/20 transition-all duration-300 hover:scale-105">
                             <i class="fas fa-search mr-1"></i> UX Research
                         </span>
                         <span class="px-4 py-2 bg-pink-500/10 border border-pink-500/30 rounded-lg text-pink-600 dark:text-pink-400 font-semibold hover:bg-pink-500/20 transition-all duration-300 hover:scale-105">
@@ -364,15 +364,15 @@
                     <!-- Social Links -->
                     <div class="flex gap-4 justify-center md:justify-start pt-4">
                         <a href="https://www.linkedin.com/in/fajar-mustaqin/" target="_blank" 
-                           class="group w-12 h-12 bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-indigo-600 hover:border-transparent transition-all duration-300 hover:scale-110">
+                           class="group w-12 h-12 bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:border-transparent transition-all duration-300 hover:scale-110">
                             <i class="fab fa-linkedin text-xl text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors"></i>
                         </a>
                         <a href="https://www.instagram.com/fajarmustqn/" target="_blank" 
-                           class="group w-12 h-12 bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:border-transparent transition-all duration-300 hover:scale-110">
+                           class="group w-12 h-12 bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-600 hover:border-transparent transition-all duration-300 hover:scale-110">
                             <i class="fab fa-instagram text-xl text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors"></i>
                         </a>
                         <a href="https://www.facebook.com/fajar.mustaqin.2025/?locale=id_ID" target="_blank" 
-                           class="group w-12 h-12 bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-600 hover:border-transparent transition-all duration-300 hover:scale-110">
+                           class="group w-12 h-12 bg-gray-200/80 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:border-transparent transition-all duration-300 hover:scale-110">
                             <i class="fab fa-facebook text-xl text-gray-600 dark:text-gray-400 group-hover:text-white transition-colors"></i>
                         </a>
                         <a href="https://github.com/fajarmustaqin" target="_blank" 
@@ -392,13 +392,13 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                     Work <span class="gradient-text">Experience</span>
                 </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full"></div>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full"></div>
                     </div>
     
             <div class="max-w-5xl mx-auto">
                 <div class="space-y-6">
                     <!-- Experience Item 1 - Current -->
-                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 md:p-8 ring-2 ring-purple-500/20">
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 md:p-8 ring-2 ring-blue-500/20">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                             <div class="flex items-start gap-4">
                                 <!-- Company Logo -->
@@ -413,11 +413,11 @@
                                             Current
                                         </span>
                         </div>
-                                    <p class="text-purple-600 dark:text-purple-400 font-semibold mb-1">Beeru</p>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold mb-1">Beeru</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">Aug 2025 - Present</p>
                         </div>
                     </div>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30">Hybrid</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/30">Hybrid</span>
                 </div>
             </div>
     
@@ -431,7 +431,7 @@
         </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Web Programmer</h3>
-                                    <p class="text-purple-600 dark:text-purple-400 font-semibold mb-1">PT. Dapur Cokelat Indonesia</p>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold mb-1">PT. Dapur Cokelat Indonesia</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">May 2024 - Jan 2025</p>
                     </div>
                     </div>
@@ -449,7 +449,7 @@
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Back End Developer</h3>
-                                    <p class="text-purple-600 dark:text-purple-400 font-semibold mb-1">PT. Nata Connexindo</p>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold mb-1">PT. Nata Connexindo</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">Aug - Nov 2023</p>
                     </div>
                     </div>
@@ -467,7 +467,7 @@
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Web Programmer Internship</h3>
-                                    <p class="text-purple-600 dark:text-purple-400 font-semibold mb-1">PT Arkatama Multi Solusindo</p>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold mb-1">PT Arkatama Multi Solusindo</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">Aug - Dec 2022</p>
                     </div>
                     </div>
@@ -485,7 +485,7 @@
                     </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Web Programmer Internship</h3>
-                                    <p class="text-purple-600 dark:text-purple-400 font-semibold mb-1">Yayasan Hasnur Centre</p>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold mb-1">Yayasan Hasnur Centre</p>
                                     <p class="text-sm text-gray-600 dark:text-gray-400">Feb - July 2022</p>
                     </div>
                 </div>
@@ -504,20 +504,20 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                     <span class="gradient-text">Education</span>
                 </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full"></div>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full"></div>
             </div>
 
             <div class="max-w-4xl mx-auto">
                 <div class="grid md:grid-cols-2 gap-6">
                     <!-- Education Item 1 -->
-                    <div class="group hover-card bg-gradient-to-br from-purple-500/10 to-indigo-600/10 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6 md:p-8">
+                    <div class="group hover-card bg-gradient-to-br from-blue-500/10 to-teal-500/10 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 md:p-8">
                         <div class="flex items-start gap-4 mb-4">
-                            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-teal-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                 <i class="fas fa-graduation-cap text-white text-2xl"></i>
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Bachelor's Degree</h3>
-                                <p class="text-purple-600 dark:text-purple-400 font-semibold">Computer Science</p>
+                                <p class="text-blue-600 dark:text-blue-400 font-semibold">Computer Science</p>
                     </div>
                     </div>
                         <div class="pl-0">
@@ -597,7 +597,7 @@
                 title: 'Reseller Beeru',
                 shortDesc: 'Platform reseller untuk produk Beeru dengan fitur order, tracking, dan komisi.',
                 category: 'Web Development',
-                categoryColor: 'purple',
+                categoryColor: 'blue',
                 techStack: ['Laravel', 'MySQL', 'JavaScript', 'Bootstrap', 'Git', 'Docker'],
                 images: ['assets/img/projects/login-reseller.png', 'assets/img/projects/dashboard-reseller.png', 'assets/img/projects/product-reseller.png'],
                 liveUrl: 'https://reseller.beeru.id/'
@@ -607,7 +607,7 @@
                 title: 'ERP Dapur Cokelat',
                 shortDesc: 'Dashboard untuk monitoring dan analisis data sistem DCI dengan visualisasi real-time.',
                 category: 'Web Development',
-                categoryColor: 'indigo',
+                categoryColor: 'teal',
                 techStack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap', 'Git'],
                 images: ['assets/img/projects/dci-login.png', 'assets/img/projects/dci-dashboard.png'],
                 liveUrl: 'https://dci.dapurcokelat.com/login_form.php'
@@ -672,7 +672,7 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                     Featured <span class="gradient-text">Projects</span>
                 </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full"></div>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full"></div>
                 <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
                     Here are some of my recent projects that showcase my skills and expertise in web development.
                 </p>
@@ -700,17 +700,28 @@
                                         <img :src="getImageSrc(slide)" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                     </div>
                                 </template>
-                            </div>
+                                </div>
                             <!-- Overlay -->
                             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
                                 <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <i class="fas fa-eye text-white text-3xl"></i>
-                                </div>
                             </div>
+                        </div>
                             <!-- Tech Badge -->
                             <div class="absolute top-3 left-3">
                                 <span class="px-2 py-1 text-white text-xs font-semibold rounded-lg" 
-                                      :class="`bg-${$parent.getProjectById(project.id).categoryColor}-500/90`"
+                                      x-bind:class="{
+                                          'bg-blue-500/90': project.categoryColor === 'blue',
+                                          'bg-teal-500/90': project.categoryColor === 'teal',
+                                          'bg-green-500/90': project.categoryColor === 'green',
+                                          'bg-red-500/90': project.categoryColor === 'red',
+                                          'bg-orange-500/90': project.categoryColor === 'orange',
+                                          'bg-yellow-500/90': project.categoryColor === 'yellow',
+                                          'bg-pink-500/90': project.categoryColor === 'pink',
+                                          'bg-indigo-500/90': project.categoryColor === 'indigo',
+                                          'bg-purple-500/90': project.categoryColor === 'purple',
+                                          'bg-gray-500/90': !['blue', 'teal', 'green', 'red', 'orange', 'yellow', 'pink', 'indigo', 'purple'].includes(project.categoryColor)
+                                      }"
                                       x-text="project.category"></span>
                             </div>
                             <!-- Image Counter -->
@@ -722,7 +733,18 @@
                         <!-- Project Info -->
                         <div class="p-6">
                             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors"
-                                :class="`group-hover:text-${project.categoryColor}-600 dark:group-hover:text-${project.categoryColor}-400`"
+                                x-bind:class="{
+                                    'group-hover:text-blue-600 dark:group-hover:text-blue-400': project.categoryColor === 'blue',
+                                    'group-hover:text-teal-600 dark:group-hover:text-teal-400': project.categoryColor === 'teal',
+                                    'group-hover:text-green-600 dark:group-hover:text-green-400': project.categoryColor === 'green',
+                                    'group-hover:text-red-600 dark:group-hover:text-red-400': project.categoryColor === 'red',
+                                    'group-hover:text-orange-600 dark:group-hover:text-orange-400': project.categoryColor === 'orange',
+                                    'group-hover:text-yellow-600 dark:group-hover:text-yellow-400': project.categoryColor === 'yellow',
+                                    'group-hover:text-pink-600 dark:group-hover:text-pink-400': project.categoryColor === 'pink',
+                                    'group-hover:text-indigo-600 dark:group-hover:text-indigo-400': project.categoryColor === 'indigo',
+                                    'group-hover:text-purple-600 dark:group-hover:text-purple-400': project.categoryColor === 'purple',
+                                    'group-hover:text-gray-600 dark:group-hover:text-gray-400': !['blue', 'teal', 'green', 'red', 'orange', 'yellow', 'pink', 'indigo', 'purple'].includes(project.categoryColor)
+                                }"
                                 x-text="project.title"></h3>
                             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2" x-text="project.shortDesc"></p>
                             <div class="flex flex-wrap gap-1 mb-4">
@@ -734,8 +756,19 @@
                             </div>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                                <i class="fas fa-arrow-right transition-transform"
-                                   :class="`text-${project.categoryColor}-600 dark:text-${project.categoryColor}-400 group-hover:translate-x-1`"></i>
+                                <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"
+                                   x-bind:class="{
+                                       'text-blue-600 dark:text-blue-400': project.categoryColor === 'blue',
+                                       'text-teal-600 dark:text-teal-400': project.categoryColor === 'teal',
+                                       'text-green-600 dark:text-green-400': project.categoryColor === 'green',
+                                       'text-red-600 dark:text-red-400': project.categoryColor === 'red',
+                                       'text-orange-600 dark:text-orange-400': project.categoryColor === 'orange',
+                                       'text-yellow-600 dark:text-yellow-400': project.categoryColor === 'yellow',
+                                       'text-pink-600 dark:text-pink-400': project.categoryColor === 'pink',
+                                       'text-indigo-600 dark:text-indigo-400': project.categoryColor === 'indigo',
+                                       'text-purple-600 dark:text-purple-400': project.categoryColor === 'purple',
+                                       'text-gray-600 dark:text-gray-400': !['blue', 'teal', 'green', 'red', 'orange', 'yellow', 'pink', 'indigo', 'purple'].includes(project.categoryColor)
+                                   }"></i>
                             </div>
                         </div>
                     </div>
@@ -767,7 +800,7 @@
                         </div>
                         <!-- Tech Badge -->
                         <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-purple-500/90 text-white text-xs font-semibold rounded-lg">Web Dev</span>
+                            <span class="px-2 py-1 bg-blue-500/90 text-white text-xs font-semibold rounded-lg">Web Dev</span>
                         </div>
                         <!-- Image Counter -->
                         <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
@@ -777,7 +810,7 @@
                     
                     <!-- Project Info -->
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                             Reseller Beeru.
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
@@ -787,10 +820,10 @@
                             <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">Laravel</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
                             <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
-                        </div>
+                            </div>
                         <div class="flex items-center justify-between">
                             <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-purple-600 dark:text-purple-400 group-hover:translate-x-1 transition-transform"></i>
+                            <i class="fas fa-arrow-right text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
                 </div>
@@ -823,7 +856,7 @@
                         </div>
                         <!-- Tech Badge -->
                         <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-indigo-500/90 text-white text-xs font-semibold rounded-lg">Full Stack</span>
+                            <span class="px-2 py-1 bg-teal-500/90 text-white text-xs font-semibold rounded-lg">Full Stack</span>
                         </div>
                         <!-- Image Counter -->
                         <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
@@ -833,21 +866,21 @@
                     
                     <!-- Project Info -->
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
                             ERP Dapur Cokelat tt
                         </h3>
                         <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
                             Comprehensive education management system with interactive elements for streamlined administrative tasks.
                         </p>
                         <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">PHP</span>
+                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">PHP</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
                             <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Docker</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-indigo-600 dark:text-indigo-400 group-hover:translate-x-1 transition-transform"></i>
+                            <i class="fas fa-arrow-right text-teal-600 dark:text-teal-400 group-hover:translate-x-1 transition-transform"></i>
                         </div>
                     </div>
                 </div>
@@ -1012,7 +1045,7 @@
                         </p>
                         <div class="flex flex-wrap gap-1 mb-4">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">React Native</span>
-                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">Firebase</span>
+                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">Firebase</span>
                             <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">API</span>
                         </div>
                         <div class="flex items-center justify-between">
@@ -1124,7 +1157,7 @@
                         </p>
                         <div class="flex flex-wrap gap-1 mb-4">
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Figma</span>
-                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">Adobe XD</span>
+                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">Adobe XD</span>
                             <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Prototype</span>
                         </div>
                         <div class="flex items-center justify-between">
@@ -1181,7 +1214,7 @@
                         <div class="flex flex-wrap gap-1 mb-4">
                             <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Express.js</span>
                             <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MongoDB</span>
-                            <span class="px-2 py-1 bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 text-xs rounded">JWT</span>
+                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">JWT</span>
                         </div>
                         <div class="flex items-center justify-between">
                             <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
@@ -1282,7 +1315,7 @@
                     <!-- Modal Header -->
                     <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
                         <div>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/30 mb-2">Web Development</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/30 mb-2">Web Development</span>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Reseller Beeru.</h2>
                         </div>
                         <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
@@ -1319,7 +1352,7 @@
                                 <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                                     <template x-for="(slide, index) in slides" :key="index">
                                         <button @click="direction = 1; currentSlide = index" 
-                                                :class="currentSlide === index ? 'w-8 bg-purple-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                :class="currentSlide === index ? 'w-8 bg-blue-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
                                                 class="h-2 rounded-full transition-all duration-300">
                                         </button>
                                     </template>
@@ -1360,10 +1393,10 @@
                                     </div>
                                 </div>
 
-                                <div class="flex gap-4">
-                                    <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-semibold">
-                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
-                                    </a>
+                            <div class="flex gap-4">
+                                    <a href="https://reseller.beeru.id/" target="_blank" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                                    <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                </a>
                                 </div>
                             </div>
                         </div>
@@ -1394,7 +1427,7 @@
                     <!-- Modal Header -->
                     <div class="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
                         <div>
-                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/30 mb-2">Full Stack</span>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-teal-500/10 text-teal-600 dark:text-teal-400 border border-teal-500/30 mb-2">Full Stack</span>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">ERP Dapur Cokelat</h2>
                         </div>
                         <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
@@ -1431,7 +1464,7 @@
                                 <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                                     <template x-for="(slide, index) in slides" :key="index">
                                         <button @click="direction = 1; currentSlide = index" 
-                                                :class="currentSlide === index ? 'w-8 bg-indigo-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
+                                                :class="currentSlide === index ? 'w-8 bg-teal-600' : 'w-2 bg-white/50 dark:bg-gray-600/50 hover:bg-white/80 dark:hover:bg-gray-600/80'" 
                                                 class="h-2 rounded-full transition-all duration-300">
                                         </button>
                                     </template>
@@ -1476,7 +1509,7 @@
                                 </div>
 
                                 <div class="flex gap-4">
-                                    <a href="https://dci.dapurcokelat.com/login_form.php" target="_blank" class="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold">
+                                    <a href="https://dci.dapurcokelat.com/login_form.php" target="_blank" class="inline-flex items-center px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors font-semibold">
                                         <i class="fas fa-external-link-alt mr-2"></i> View Live
                                     </a>
                                 </div>
@@ -1699,14 +1732,14 @@
                                         <i class="fas fa-external-link-alt mr-2"></i> View Live
                                     </a>
                                     <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
-                                        <i class="fab fa-github mr-2"></i> Source Code
-                                    </a>
+                                    <i class="fab fa-github mr-2"></i> Source Code
+                                </a>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Modal 5: Project 5 Template -->
             <div x-show="openModal === 'project5'" 
@@ -1733,7 +1766,7 @@
                         <div>
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-500/10 text-green-600 dark:text-green-400 border border-green-500/30 mb-2">Mobile App</span>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 5</h2>
-                        </div>
+                            </div>
                         <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
                             <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
                         </button>
@@ -1785,7 +1818,7 @@
                                     <p class="text-gray-700 dark:text-gray-400 leading-relaxed">
                                         Detailed description of your mobile app project here. Explain what the app does, its main features, challenges faced, and what you learned from building it.
                                     </p>
-                                </div>
+                            </div>
 
                                 <div>
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">Technologies Used</h3>
@@ -1802,19 +1835,19 @@
                                     </div>
                                 </div>
 
-                                <div class="flex gap-4">
+                            <div class="flex gap-4">
                                     <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-semibold">
-                                        <i class="fas fa-external-link-alt mr-2"></i> View Live
-                                    </a>
+                                    <i class="fas fa-external-link-alt mr-2"></i> View Live
+                                </a>
                                     <a href="#" target="_blank" class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-semibold">
-                                        <i class="fab fa-github mr-2"></i> Source Code
-                                    </a>
-                                </div>
+                                    <i class="fab fa-github mr-2"></i> Source Code
+                                </a>
                             </div>
                         </div>
-                    </div>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
-            </div>
 
             <!-- Modal 6: Project 6 Template -->
             <div x-show="openModal === 'project6'" 
@@ -1841,11 +1874,11 @@
                         <div>
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/30 mb-2">E-commerce</span>
                             <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Project Title 6</h2>
-                        </div>
+            </div>
                         <button @click="openModal = null" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors">
                             <i class="fas fa-times text-gray-500 dark:text-gray-400"></i>
                         </button>
-                    </div>
+                </div>
 
                     <!-- Modal Content -->
                     <div class="p-6">
@@ -2259,7 +2292,7 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
                     Certifications & <span class="gradient-text">Training</span>
                 </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-purple-500 to-indigo-600 mx-auto rounded-full"></div>
+                <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full"></div>
                 <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
                     Continuous learning journey to stay updated with the latest technologies and best practices.
                 </p>
@@ -2271,16 +2304,16 @@
                     <!-- Training 1 -->
                     <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 rounded-full filter blur-2xl"></div>
-                        <div class="relative z-10">
+                    <div class="relative z-10">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-graduation-cap text-white text-2xl"></i>
-                                </div>
+                            </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Design & Programming with SQL</h3>
                                     <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm">Digitalent Scholarship</p>
-                                </div>
-                            </div>
+                        </div>
+                        </div>
                             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
                                 Program pelatihan komprehensif yang mencakup prinsip-prinsip desain database, pemrograman SQL, dan teknik optimasi query untuk pengembangan aplikasi database yang efisien.
                             </p>
@@ -2290,22 +2323,22 @@
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
-                        </div>
                     </div>
+                </div>
 
                     <!-- Certification 1 -->
                     <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-full filter blur-2xl"></div>
-                        <div class="relative z-10">
+                    <div class="relative z-10">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-server text-white text-2xl"></i>
-                                </div>
+                            </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Design</h3>
                                     <p class="text-orange-600 dark:text-orange-400 font-semibold text-sm">Oracle Academy</p>
-                                </div>
-                            </div>
+                        </div>
+                        </div>
                             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
                                 Sertifikasi profesional dalam prinsip-prinsip desain database, pemodelan data, dan arsitektur database Oracle untuk pengembangan sistem database enterprise.
                             </p>
@@ -2315,21 +2348,21 @@
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
-                        </div>
                     </div>
+                </div>
 
                     <!-- Certification 2 -->
                     <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-full filter blur-2xl"></div>
-                        <div class="relative z-10">
+                    <div class="relative z-10">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-terminal text-white text-2xl"></i>
-                                </div>
+                            </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Programming with SQL</h3>
                                     <p class="text-green-600 dark:text-green-400 font-semibold text-sm">Oracle Academy</p>
-                                </div>
+                        </div>
                             </div>
                             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
                                 Sertifikasi profesional dalam pemrograman SQL, query database, dan pengembangan database Oracle untuk membangun aplikasi database yang robust dan scalable.
@@ -2339,21 +2372,21 @@
                                 <a href="https://drive.google.com/file/d/1Q8dy2rDLK_pc0DJDcRbzFKHGiwFlFXlA/view?usp=sharing" target="_blank" class="text-green-600 dark:text-green-400 hover:text-green-500 dark:hover:text-green-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
-                            </div>
+                        </div>
                         </div>
                     </div>
 
                     <!-- Certification 3 -->
                     <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-pink-600/10 rounded-full filter blur-2xl"></div>
                         <div class="relative z-10">
                             <div class="flex items-start gap-4 mb-4">
-                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-medal text-white text-2xl"></i>
                                 </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Junior Web Developer</h3>
-                                    <p class="text-purple-600 dark:text-purple-400 font-semibold text-sm">BNSP</p>
+                                    <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm">BNSP</p>
                                 </div>
                             </div>
                             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
@@ -2361,35 +2394,35 @@
                             </p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Issued: May 2023</span>
-                                <a href="https://drive.google.com/file/d/1PmRNd53mJpND07qsi8Rl-xrisd-a7LlH/view?usp=drive_link" target="_blank" class="text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 text-sm font-semibold transition-colors">
+                                <a href="https://drive.google.com/file/d/1PmRNd53mJpND07qsi8Rl-xrisd-a7LlH/view?usp=drive_link" target="_blank" class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
-                        </div>
                     </div>
+                </div>
 
                     <!-- Training 2 -->
                     <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-indigo-500/10 to-blue-600/10 rounded-full filter blur-2xl"></div>
-                        <div class="relative z-10">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-teal-500/10 to-blue-600/10 rounded-full filter blur-2xl"></div>
+                    <div class="relative z-10">
                             <div class="flex items-start gap-4 mb-4">
-                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-teal-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-laptop-code text-white text-2xl"></i>
-                                </div>
+                            </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Junior Web Developer</h3>
-                                    <p class="text-indigo-600 dark:text-indigo-400 font-semibold text-sm">Digitalent Scholarship</p>
-                                </div>
+                                    <p class="text-teal-600 dark:text-teal-400 font-semibold text-sm">Digitalent Scholarship</p>
+                        </div>
                             </div>
                             <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
                                 Program pelatihan komprehensif yang mencakup dasar-dasar pengembangan web, HTML, CSS, JavaScript, dan framework modern untuk membangun aplikasi web yang interaktif dan responsif.
                             </p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Okt 2023</span>
-                                <a href="https://drive.google.com/file/d/1kr9wpK-rt3CxKC_e8_3eMEEJhXjWL0l4/view?usp=drive_link" target="_blank" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300 text-sm font-semibold transition-colors">
+                                <a href="https://drive.google.com/file/d/1kr9wpK-rt3CxKC_e8_3eMEEJhXjWL0l4/view?usp=drive_link" target="_blank" class="text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
-                            </div>
+                        </div>
                         </div>
                     </div>
 
@@ -2417,7 +2450,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+            </div>
             </div>
         </div>
     </section>
@@ -2430,7 +2463,7 @@
                 <!-- Brand -->
                 <div>
                     <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg flex items-center justify-center">
                             <span class="text-white font-bold text-xl">F</span>
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white">Fajar <span class="gradient-text">Mustaqin</span></h3>
@@ -2444,11 +2477,11 @@
                 <div>
                     <h4 class="text-gray-900 dark:text-white font-bold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Home</a></li>
-                        <li><a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">About</a></li>
-                        <li><a href="#work-experience" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Experience</a></li>
-                        <li><a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Projects</a></li>
-                        <li><a href="#certifications" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors text-sm">Certifications</a></li>
+                        <li><a href="#home" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Home</a></li>
+                        <li><a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
+                        <li><a href="#work-experience" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Experience</a></li>
+                        <li><a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Projects</a></li>
+                        <li><a href="#certifications" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Certifications</a></li>
                     </ul>
                 </div>
 
@@ -2457,15 +2490,15 @@
                     <h4 class="text-gray-900 dark:text-white font-bold mb-4">Let's Connect</h4>
                     <div class="flex gap-3 mb-4">
                         <a href="https://www.linkedin.com/in/fajar-mustaqin/" target="_blank" 
-                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-purple-500 hover:to-indigo-600 hover:border-transparent transition-all duration-300">
+                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:border-transparent transition-all duration-300">
                             <i class="fab fa-linkedin text-gray-600 dark:text-gray-400 hover:text-white transition-colors"></i>
                         </a>
                         <a href="https://www.instagram.com/fajarmustqn/" target="_blank" 
-                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-pink-500 hover:to-purple-600 hover:border-transparent transition-all duration-300">
+                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-600 hover:border-transparent transition-all duration-300">
                             <i class="fab fa-instagram text-gray-600 dark:text-gray-400 hover:text-white transition-colors"></i>
                         </a>
                         <a href="https://www.facebook.com/fajar.mustaqin.2025/?locale=id_ID" target="_blank" 
-                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-indigo-600 hover:border-transparent transition-all duration-300">
+                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:border-transparent transition-all duration-300">
                             <i class="fab fa-facebook text-gray-600 dark:text-gray-400 hover:text-white transition-colors"></i>
                         </a>
                         <a href="https://github.com/fajarmustaqin" target="_blank" 
@@ -2475,7 +2508,7 @@
                     </div>
                     <p class="text-gray-600 dark:text-gray-400 text-sm">
                         <i class="fas fa-envelope mr-2"></i>
-                        <a href="mailto:fajar@example.com" class="hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Get in touch</a>
+                        <a href="mailto:fajar@example.com" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Get in touch</a>
                     </p>
                 </div>
             </div>
@@ -2483,7 +2516,7 @@
             <!-- Bottom Bar -->
             <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <p class="text-gray-600 dark:text-gray-400 text-sm">
-                    &copy; 2025 <span class="text-purple-600 dark:text-purple-400 font-semibold">Fajar Mustaqin</span>. All rights reserved.
+                    &copy; 2025 <span class="text-blue-600 dark:text-blue-400 font-semibold">Fajar Mustaqin</span>. All rights reserved.
                 </p>
                 <div class="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
                     <span>Made with <span class="text-red-500">♥</span> using Tailwind CSS</span>
@@ -2545,8 +2578,8 @@
 
         // Typewriter Effect
         const texts = [
-            { text: '💻 Web Developer', color: 'text-purple-600 dark:text-purple-400' },
-            { text: '🚀 Tech Enthusiast', color: 'text-indigo-600 dark:text-indigo-400' },
+            { text: '💻 Web Developer', color: 'text-blue-600 dark:text-blue-400' },
+            { text: '🚀 Tech Enthusiast', color: 'text-teal-600 dark:text-teal-400' },
             { text: '🧩 Problem Solver', color: 'text-pink-600 dark:text-pink-400' },
             { text: '💡 Creative Thinker', color: 'text-blue-600 dark:text-blue-400' }
         ];
