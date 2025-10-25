@@ -225,6 +225,7 @@
                     <li class="w-full lg:w-auto"><a href="#home" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Home</a></li>
                     <li class="w-full lg:w-auto"><a href="#about" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">About</a></li>
                     <li class="w-full lg:w-auto"><a href="#work-experience" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Experience</a></li>
+                    <li class="w-full lg:w-auto"><a href="#education" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Education</a></li>
                     <li class="w-full lg:w-auto"><a href="#projects" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Portfolio</a></li>
                     <li class="w-full lg:w-auto"><a href="#certifications" class="block px-4 py-2 rounded-lg hover:bg-blue-500/10 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">Certifications</a></li>
                 </ul>
@@ -517,12 +518,17 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Bachelor's Degree</h3>
-                                <p class="text-blue-600 dark:text-blue-400 font-semibold">Computer Science</p>
+                                <p class="text-blue-600 dark:text-blue-400 font-semibold">informatics engineering
+                                </p>
                     </div>
                     </div>
                         <div class="pl-0">
                             <p class="text-gray-900 dark:text-white font-semibold mb-1">Universitas Pamulang</p>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm">2019 - 2024</p>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-2">2019 - 2024</p>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">GPA:</span>
+                                <span class="px-2 py-1 bg-gradient-to-r from-blue-500 to-teal-500 text-white text-xs font-bold rounded-full">3.64/4.00</span>
+                            </div>
                     </div>
                 </div>
     
@@ -673,611 +679,99 @@
                     Featured <span class="gradient-text">Projects</span>
                 </h2>
                 <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-teal-500 mx-auto rounded-full"></div>
-                <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
-                    Here are some of my recent projects that showcase my skills and expertise in web development.
-                </p>
             </div>
 
-            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Dynamic Project Cards -->
-                <template x-for="project in projects" :key="project.id">
-                    <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                         @click="setClickPosition($event); openModal = project.id"
-                         x-data="{ 
-                             currentSlide: 0, 
-                             direction: 1,
-                             slides: project.images,
-                             nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                             prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
-                             getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
-                         }">
-                        <!-- Project Image -->
-                        <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                            <div class="relative h-full">
-                                <template x-for="(slide, index) in slides" :key="index">
-                                    <div x-show="currentSlide === index" 
-                                         class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                        <img :src="getImageSrc(slide)" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    </div>
+            <!-- Projects Table -->
+            <div class="max-w-6xl mx-auto">
+                <div class="bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden shadow-lg">
+                    <!-- Table Header -->
+                    <div class="bg-gradient-to-r from-blue-500/10 to-teal-500/10 border-b border-gray-200 dark:border-gray-700 px-6 py-4">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Project Portfolio</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Click on any project to view detailed information</p>
+                    </div>
+                    
+                    <!-- Table Content -->
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 dark:bg-gray-900/50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Project</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Category</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tech Stack</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">Link</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-gray-800/40 divide-y divide-gray-200 dark:divide-gray-700">
+                                <template x-for="project in projects" :key="project.id">
+                                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200 cursor-pointer"
+                                        @click="setClickPosition($event); openModal = project.id">
+                                        <!-- Project Info -->
+                                        <td class="px-6 py-4">
+                                            <div class="flex items-center">
+                                                <div class="flex-shrink-0 h-12 w-12">
+                                                    <div class="h-12 w-12 rounded-lg bg-gradient-to-br from-blue-500 to-teal-500 flex items-center justify-center">
+                                                        <i class="fas fa-code text-white text-lg"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="ml-4">
+                                                    <div class="text-sm font-medium text-gray-900 dark:text-white" x-text="project.title"></div>
+                                                    <div class="text-sm text-gray-500 dark:text-gray-400" x-text="project.shortDesc"></div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        
+                                        <!-- Category -->
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span class="px-2 py-1 text-xs font-semibold rounded-full text-white"
+                                                  x-bind:class="{
+                                                      'bg-blue-500': project.categoryColor === 'blue',
+                                                      'bg-teal-500': project.categoryColor === 'teal',
+                                                      'bg-green-500': project.categoryColor === 'green',
+                                                      'bg-red-500': project.categoryColor === 'red',
+                                                      'bg-orange-500': project.categoryColor === 'orange',
+                                                      'bg-yellow-500': project.categoryColor === 'yellow',
+                                                      'bg-pink-500': project.categoryColor === 'pink',
+                                                      'bg-indigo-500': project.categoryColor === 'indigo',
+                                                      'bg-purple-500': project.categoryColor === 'purple',
+                                                      'bg-gray-500': !['blue', 'teal', 'green', 'red', 'orange', 'yellow', 'pink', 'indigo', 'purple'].includes(project.categoryColor)
+                                                  }"
+                                                  x-text="project.category"></span>
+                                        </td>
+                                        
+                                        <!-- Tech Stack -->
+                                        <td class="px-6 py-4">
+                                            <div class="flex flex-wrap gap-1">
+                                                <template x-for="tech in project.techStack.slice(0, 3)" :key="tech">
+                                                    <span class="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs rounded" x-text="tech"></span>
+                                                </template>
+                                                <span x-show="project.techStack.length > 3" class="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs rounded">
+                                                    +<span x-text="project.techStack.length - 3"></span>
+                                                </span>
+                                            </div>
+                                        </td>
+                                        
+                                        <!-- Link -->
+                                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <a :href="project.liveUrl" target="_blank" 
+                                               class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 transition-colors"
+                                               @click.stop>
+                                                <i class="fas fa-external-link-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </template>
-                                </div>
-                            <!-- Overlay -->
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                            <!-- Tech Badge -->
-                            <div class="absolute top-3 left-3">
-                                <span class="px-2 py-1 text-white text-xs font-semibold rounded-lg" 
-                                      x-bind:class="{
-                                          'bg-blue-500/90': project.categoryColor === 'blue',
-                                          'bg-teal-500/90': project.categoryColor === 'teal',
-                                          'bg-green-500/90': project.categoryColor === 'green',
-                                          'bg-red-500/90': project.categoryColor === 'red',
-                                          'bg-orange-500/90': project.categoryColor === 'orange',
-                                          'bg-yellow-500/90': project.categoryColor === 'yellow',
-                                          'bg-pink-500/90': project.categoryColor === 'pink',
-                                          'bg-indigo-500/90': project.categoryColor === 'indigo',
-                                          'bg-purple-500/90': project.categoryColor === 'purple',
-                                          'bg-gray-500/90': !['blue', 'teal', 'green', 'red', 'orange', 'yellow', 'pink', 'indigo', 'purple'].includes(project.categoryColor)
-                                      }"
-                                      x-text="project.category"></span>
-                            </div>
-                            <!-- Image Counter -->
-                            <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                                <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                            </div>
-                        </div>
-                        
-                        <!-- Project Info -->
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors"
-                                x-bind:class="{
-                                    'group-hover:text-blue-600 dark:group-hover:text-blue-400': project.categoryColor === 'blue',
-                                    'group-hover:text-teal-600 dark:group-hover:text-teal-400': project.categoryColor === 'teal',
-                                    'group-hover:text-green-600 dark:group-hover:text-green-400': project.categoryColor === 'green',
-                                    'group-hover:text-red-600 dark:group-hover:text-red-400': project.categoryColor === 'red',
-                                    'group-hover:text-orange-600 dark:group-hover:text-orange-400': project.categoryColor === 'orange',
-                                    'group-hover:text-yellow-600 dark:group-hover:text-yellow-400': project.categoryColor === 'yellow',
-                                    'group-hover:text-pink-600 dark:group-hover:text-pink-400': project.categoryColor === 'pink',
-                                    'group-hover:text-indigo-600 dark:group-hover:text-indigo-400': project.categoryColor === 'indigo',
-                                    'group-hover:text-purple-600 dark:group-hover:text-purple-400': project.categoryColor === 'purple',
-                                    'group-hover:text-gray-600 dark:group-hover:text-gray-400': !['blue', 'teal', 'green', 'red', 'orange', 'yellow', 'pink', 'indigo', 'purple'].includes(project.categoryColor)
-                                }"
-                                x-text="project.title"></h3>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2" x-text="project.shortDesc"></p>
-                            <div class="flex flex-wrap gap-1 mb-4">
-                                <template x-for="tech in project.techStack.slice(0, 3)" :key="tech">
-                                    <span class="px-2 py-1 text-xs rounded" 
-                                          :class="`bg-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-100 text-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-600 dark:bg-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-900/30 dark:text-${tech.toLowerCase().includes('laravel') ? 'red' : tech.toLowerCase().includes('react') ? 'blue' : tech.toLowerCase().includes('node') ? 'green' : 'gray'}-400`"
-                                          x-text="tech"></span>
-                                </template>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                                <i class="fas fa-arrow-right transition-transform group-hover:translate-x-1"
-                                   x-bind:class="{
-                                       'text-blue-600 dark:text-blue-400': project.categoryColor === 'blue',
-                                       'text-teal-600 dark:text-teal-400': project.categoryColor === 'teal',
-                                       'text-green-600 dark:text-green-400': project.categoryColor === 'green',
-                                       'text-red-600 dark:text-red-400': project.categoryColor === 'red',
-                                       'text-orange-600 dark:text-orange-400': project.categoryColor === 'orange',
-                                       'text-yellow-600 dark:text-yellow-400': project.categoryColor === 'yellow',
-                                       'text-pink-600 dark:text-pink-400': project.categoryColor === 'pink',
-                                       'text-indigo-600 dark:text-indigo-400': project.categoryColor === 'indigo',
-                                       'text-purple-600 dark:text-purple-400': project.categoryColor === 'purple',
-                                       'text-gray-600 dark:text-gray-400': !['blue', 'teal', 'green', 'red', 'orange', 'yellow', 'pink', 'indigo', 'purple'].includes(project.categoryColor)
-                                   }"></i>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project1'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/login-reseller.png', 'assets/img/projects/dashboard-reseller.png', 'assets/img/projects/product-reseller.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-blue-500/90 text-white text-xs font-semibold rounded-lg">Web Dev</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                            Reseller Beeru.
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Platform reseller untuk membeli produk beeru dengan fitur login, dashboard, product, dan payment gateway.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">Laravel</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
-                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
-                            </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
 
-                <!-- Project 2 -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project2'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/dci-login.png', 'assets/img/projects/dci-dashboard.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-teal-500/90 text-white text-xs font-semibold rounded-lg">Full Stack</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-                            ERP Dapur Cokelat tt
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Comprehensive education management system with interactive elements for streamlined administrative tasks.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">PHP</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
-                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Docker</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-teal-600 dark:text-teal-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
+            <!-- Project Detail Modals -->
 
-                <!-- Project 3 -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project3'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/booking-dc-login.png', 'assets/img/projects/booking-dc-list.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
-                         getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-teal-500/90 text-white text-xs font-semibold rounded-lg">Web Dev</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
-                            Booking System Dapur Cokelat
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Platform booking system untuk manajemen reservasi dengan fitur dashboard dan payment gateway terintegrasi.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">Laravel</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MySQL</span>
-                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">JS</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-teal-600 dark:text-teal-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Project 4 - Template -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project4'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/delivery-login.png', 'assets/img/projects/delivery-dashboard.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; },
-                         getImageSrc(slide) { return slide + '?v=' + new Date().getTime(); }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="getImageSrc(slide)" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-blue-500/90 text-white text-xs font-semibold rounded-lg">Full Stack</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                            Delivery System Dapur Cokelat
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Short description of your project here. This will be displayed in the card preview.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">React</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Node.js</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MongoDB</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Project 5 - Template -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project5'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/project5-1.png', 'assets/img/projects/project5-2.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-green-500/90 text-white text-xs font-semibold rounded-lg">Mobile App</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-                            Project Title 5
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Short description of your project here. This will be displayed in the card preview.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">React Native</span>
-                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">Firebase</span>
-                            <span class="px-2 py-1 bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 text-xs rounded">API</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-green-600 dark:text-green-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
+           
 
-                <!-- Project 6 - Template -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project6'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/project6-1.png', 'assets/img/projects/project6-2.png', 'assets/img/projects/project6-3.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-orange-500/90 text-white text-xs font-semibold rounded-lg">E-commerce</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
-                            Project Title 6
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Short description of your project here. This will be displayed in the card preview.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">Laravel</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Vue.js</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Stripe</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-orange-600 dark:text-orange-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 7 - Template -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project7'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/project7-1.png', 'assets/img/projects/project7-2.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-pink-500/90 text-white text-xs font-semibold rounded-lg">UI/UX</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">
-                            Project Title 7
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Short description of your project here. This will be displayed in the card preview.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Figma</span>
-                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">Adobe XD</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Prototype</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-pink-600 dark:text-pink-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 8 - Template -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project8'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/project8-1.png', 'assets/img/projects/project8-2.png', 'assets/img/projects/project8-3.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-red-500/90 text-white text-xs font-semibold rounded-lg">API</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">
-                            Project Title 8
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Short description of your project here. This will be displayed in the card preview.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Express.js</span>
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">MongoDB</span>
-                            <span class="px-2 py-1 bg-purple-100 text-blue-600 dark:bg-purple-900/30 dark:text-blue-400 text-xs rounded">JWT</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-red-600 dark:text-red-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 9 - Template -->
-                <div class="group bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer"
-                     @click="setClickPosition($event); openModal = 'project9'"
-                     x-data="{ 
-                         currentSlide: 0, 
-                         direction: 1,
-                         slides: ['assets/img/projects/project9-1.png', 'assets/img/projects/project9-2.png'],
-                         nextSlide() { this.direction = 1; this.currentSlide = this.currentSlide < this.slides.length - 1 ? this.currentSlide + 1 : 0; },
-                         prevSlide() { this.direction = -1; this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.slides.length - 1; }
-                     }">
-                    <!-- Project Image -->
-                    <div class="relative h-48 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-                        <div class="relative h-full">
-                            <template x-for="(slide, index) in slides" :key="index">
-                                <div x-show="currentSlide === index" 
-                                     class="absolute inset-0 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
-                                    <img :src="slide" :alt="`Project screenshot ${index + 1}`" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                </div>
-                            </template>
-                        </div>
-                        <!-- Overlay -->
-                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                            <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <i class="fas fa-eye text-white text-3xl"></i>
-                            </div>
-                        </div>
-                        <!-- Tech Badge -->
-                        <div class="absolute top-3 left-3">
-                            <span class="px-2 py-1 bg-gray-500/90 text-white text-xs font-semibold rounded-lg">Desktop</span>
-                        </div>
-                        <!-- Image Counter -->
-                        <div class="absolute top-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs">
-                            <span x-text="currentSlide + 1"></span>/<span x-text="slides.length"></span>
-                        </div>
-                    </div>
-                    
-                    <!-- Project Info -->
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors">
-                            Project Title 9
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                            Short description of your project here. This will be displayed in the card preview.
-                        </p>
-                        <div class="flex flex-wrap gap-1 mb-4">
-                            <span class="px-2 py-1 bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs rounded">Electron</span>
-                            <span class="px-2 py-1 bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs rounded">Node.js</span>
-                            <span class="px-2 py-1 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs rounded">SQLite</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500 dark:text-gray-400">Click for details</span>
-                            <i class="fas fa-arrow-right text-gray-600 dark:text-gray-400 group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Project Detail Modals -->
@@ -2286,7 +1780,7 @@
     </section>
 
     <!-- Certifications & Training -->
-    <section id="certifications" class="py-20 bg-gray-50 dark:bg-gray-900/50">
+    <section id="certifications" class="py-20">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -2300,86 +1794,86 @@
 
             <div class="max-w-6xl mx-auto">
                 <!-- Certifications Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                    <!-- Training 1 -->
-                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 items-stretch">
+                    <!-- 1 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
+                        <div class="relative z-10 flex flex-col h-full">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-graduation-cap text-white text-2xl"></i>
-                            </div>
+                                </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Design & Programming with SQL</h3>
                                     <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm">Digitalent Scholarship</p>
-                        </div>
-                        </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
                                 Program pelatihan komprehensif yang mencakup prinsip-prinsip desain database, pemrograman SQL, dan teknik optimasi query untuk pengembangan aplikasi database yang efisien.
                             </p>
-                            <div class="flex items-center justify-between">
+
+                            <div class="flex items-center justify-between mt-auto">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Issued: Dec 2023</span>
                                 <a href="https://drive.google.com/file/d/1GK1jCp7sYoNJC2onJ35TdsyRDOCbKUvJ/view?usp=sharing" target="_blank" class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
+                        </div>
                     </div>
-                </div>
 
-                    <!-- Certification 1 -->
-                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                    <!-- 2 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-red-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
+                        <div class="relative z-10 flex flex-col h-full">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-server text-white text-2xl"></i>
-                            </div>
+                                </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Design</h3>
                                     <p class="text-orange-600 dark:text-orange-400 font-semibold text-sm">Oracle Academy</p>
-                        </div>
-                        </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                                Sertifikasi profesional dalam prinsip-prinsip desain database, pemodelan data, dan arsitektur database Oracle untuk pengembangan sistem database enterprise.
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">Pelatihan Database Design di platform Oracle Academy.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mt-auto">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Issued: Jul 2023</span>
                                 <a href="https://drive.google.com/file/d/1jg2Bef9CmtLCz1SeYk56feUhzqBOTqcC/view?usp=sharing" target="_blank" class="text-orange-600 dark:text-orange-400 hover:text-orange-500 dark:hover:text-orange-300 text-sm font-semibold transition-colors">
-                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
+                        </div>
                     </div>
-                </div>
 
-                    <!-- Certification 2 -->
-                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                    <!-- 3 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
+                        <div class="relative z-10 flex flex-col h-full">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-terminal text-white text-2xl"></i>
-                            </div>
+                                </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Database Programming with SQL</h3>
                                     <p class="text-green-600 dark:text-green-400 font-semibold text-sm">Oracle Academy</p>
-                        </div>
+                                </div>
                             </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                                Sertifikasi profesional dalam pemrograman SQL, query database, dan pengembangan database Oracle untuk membangun aplikasi database yang robust dan scalable.
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                                Pelatihan Database Programming with SQL di platform Oracle Academy.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mt-auto">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Ags 2023</span>
                                 <a href="https://drive.google.com/file/d/1Q8dy2rDLK_pc0DJDcRbzFKHGiwFlFXlA/view?usp=sharing" target="_blank" class="text-green-600 dark:text-green-400 hover:text-green-500 dark:hover:text-green-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
-                        </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Certification 3 -->
-                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                    <!-- 4 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-pink-600/10 rounded-full filter blur-2xl"></div>
-                        <div class="relative z-10">
+                        <div class="relative z-10 flex flex-col h-full">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-blue-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-medal text-white text-2xl"></i>
@@ -2389,47 +1883,97 @@
                                     <p class="text-blue-600 dark:text-blue-400 font-semibold text-sm">BNSP</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                                Sertifikasi kompetensi nasional untuk Junior Web Developer yang mencakup standar pengembangan web, best practices, dan kompetensi teknis sesuai standar industri Indonesia.
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                                Sertifikasi Profesi Junior Web Developer yang diselenggarakan di BBPTIK Cikarang.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mt-auto">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Issued: May 2023</span>
                                 <a href="https://drive.google.com/file/d/1PmRNd53mJpND07qsi8Rl-xrisd-a7LlH/view?usp=drive_link" target="_blank" class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
+                        </div>
                     </div>
-                </div>
 
-                    <!-- Training 2 -->
-                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                    <!-- 5 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-teal-500/10 to-blue-600/10 rounded-full filter blur-2xl"></div>
-                    <div class="relative z-10">
+                        <div class="relative z-10 flex flex-col h-full">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-teal-500 to-blue-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-laptop-code text-white text-2xl"></i>
-                            </div>
+                                </div>
                                 <div class="flex-1">
                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Junior Web Developer</h3>
                                     <p class="text-teal-600 dark:text-teal-400 font-semibold text-sm">Digitalent Scholarship</p>
-                        </div>
+                                </div>
                             </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
-                                Program pelatihan komprehensif yang mencakup dasar-dasar pengembangan web, HTML, CSS, JavaScript, dan framework modern untuk membangun aplikasi web yang interaktif dan responsif.
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                                Program pelatihan komprehensif yang mencakup dasar-dasar pengembangan web, PHP, MySQL, HTML, CSS, JavaScript, dan framework modern untuk membangun aplikasi web yang interaktif dan responsif.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mt-auto">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Okt 2023</span>
                                 <a href="https://drive.google.com/file/d/1kr9wpK-rt3CxKC_e8_3eMEEJhXjWL0l4/view?usp=drive_link" target="_blank" class="text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
-                        </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Training 3 -->
-                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden">
+                     <!-- 6 -->
+                     <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
+                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-500/10 to-pink-600/10 rounded-full filter blur-2xl"></div>
+                         <div class="relative z-10 flex flex-col h-full">
+                             <div class="flex items-start gap-4 mb-4">
+                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                     <i class="fas fa-laptop-code text-white text-2xl"></i>
+                                 </div>
+                                 <div class="flex-1">
+                                     <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Programmer Internship</h3>
+                                     <p class="text-red-600 dark:text-red-400 font-semibold text-sm">Arkatama Multi Solusindo</p>
+                                 </div>
+                             </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                                Program Magang Bersertifikat Kampus Merdeka (MBKM) yang diselenggarakan oleh kemendikbudristek.
+                            </p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Des 2022</span>
+                                <a href="https://drive.google.com/file/d/1k0c4PzWs1iihRopDeXMXBpcbrvk9Yahi/view?usp=sharing" target="_blank" class="text-red-600 dark:text-red-400 hover:text-red-500 dark:hover:text-red-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 7 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-emerald-600/10 rounded-full filter blur-2xl"></div>
+                        <div class="relative z-10 flex flex-col h-full">
+                            <div class="flex items-start gap-4 mb-4">
+                                <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                    <i class="fas fa-laptop-code text-white text-2xl"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">Programmer Internship</h3>
+                                    <p class="text-green-600 dark:text-green-400 font-semibold text-sm">Yayasan Hasnur Centre</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
+                                Program Magang Bersertifikat Kampus Merdeka (MBKM) yang diselenggarakan oleh kemendikbudristek.
+                            </p>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-xs text-gray-500 dark:text-gray-400">Completed: July 2022</span>
+                                <a href="https://drive.google.com/file/d/12CAGS1RCTfTsSDATjWRTU_vyIFv-VZow/view?usp=sharing" target="_blank" class="text-green-600 dark:text-green-400 hover:text-green-500 dark:hover:text-green-300 text-sm font-semibold transition-colors">
+                                    View Certificate <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 8 -->
+                    <div class="group hover-card bg-white dark:bg-gray-800/40 backdrop-blur-sm border border-gray-200 dark:border-gray-700/50 rounded-2xl p-6 relative overflow-hidden flex flex-col">
                         <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-teal-500/10 to-cyan-600/10 rounded-full filter blur-2xl"></div>
-                        <div class="relative z-10">
+                        <div class="relative z-10 flex flex-col h-full">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                                     <i class="fas fa-code text-white text-2xl"></i>
@@ -2439,10 +1983,10 @@
                                     <p class="text-teal-600 dark:text-teal-400 font-semibold text-sm">Digitalent Scholarship</p>
                                 </div>
                             </div>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed flex-grow">
                                 Program pelatihan intensif yang mencakup pengembangan web full-stack, manajemen database, dan praktik pengembangan modern untuk membangun aplikasi web yang lengkap dan profesional.
                             </p>
-                            <div class="flex items-center justify-between">
+                            <div class="flex items-center justify-between mt-auto">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Completed: Des 2021</span>
                                 <a href="https://drive.google.com/file/d/1bU7KhB5G4NZFxolZqP2gmf6KK0pwFxbs/view?usp=sharing" target="_blank" class="text-teal-600 dark:text-teal-400 hover:text-teal-500 dark:hover:text-teal-300 text-sm font-semibold transition-colors">
                                     View Certificate <i class="fas fa-external-link-alt ml-1"></i>
@@ -2450,77 +1994,44 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
             </div>
         </div>
     </section>
 
 
     <!-- Footer -->
-    <footer class="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 py-12">
+    <footer class="relative bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-t border-gray-200 dark:border-gray-800 py-8">
         <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <!-- Brand -->
-                <div>
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg flex items-center justify-center">
-                            <span class="text-white font-bold text-xl">F</span>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Fajar <span class="gradient-text">Mustaqin</span></h3>
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">F</span>
                     </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                        Professional Web Developer passionate about creating modern, user-friendly web applications.
-                    </p>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">Fajar <span class="gradient-text">Mustaqin</span></h3>
                 </div>
 
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-gray-900 dark:text-white font-bold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Home</a></li>
-                        <li><a href="#about" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">About</a></li>
-                        <li><a href="#work-experience" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Experience</a></li>
-                        <li><a href="#projects" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Projects</a></li>
-                        <li><a href="#certifications" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">Certifications</a></li>
-                    </ul>
+                <!-- Social Links -->
+                <div class="flex gap-3">
+                    <a href="https://www.linkedin.com/in/fajar-mustaqin/" target="_blank" 
+                       class="w-8 h-8 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:border-transparent transition-all duration-300">
+                        <i class="fab fa-linkedin text-gray-600 dark:text-gray-400 hover:text-white transition-colors text-sm"></i>
+                    </a>
+                    <a href="https://www.instagram.com/fajarmustqn/" target="_blank" 
+                       class="w-8 h-8 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-600 hover:border-transparent transition-all duration-300">
+                        <i class="fab fa-instagram text-gray-600 dark:text-gray-400 hover:text-white transition-colors text-sm"></i>
+                    </a>
+                    <a href="https://github.com/fajarmustaqin" target="_blank" 
+                       class="w-8 h-8 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-800 hover:border-transparent transition-all duration-300">
+                        <i class="fab fa-github text-gray-600 dark:text-gray-400 hover:text-white transition-colors text-sm"></i>
+                    </a>
                 </div>
 
-                <!-- Connect -->
-                <div>
-                    <h4 class="text-gray-900 dark:text-white font-bold mb-4">Let's Connect</h4>
-                    <div class="flex gap-3 mb-4">
-                        <a href="https://www.linkedin.com/in/fajar-mustaqin/" target="_blank" 
-                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:border-transparent transition-all duration-300">
-                            <i class="fab fa-linkedin text-gray-600 dark:text-gray-400 hover:text-white transition-colors"></i>
-                        </a>
-                        <a href="https://www.instagram.com/fajarmustqn/" target="_blank" 
-                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-pink-500 hover:to-blue-600 hover:border-transparent transition-all duration-300">
-                            <i class="fab fa-instagram text-gray-600 dark:text-gray-400 hover:text-white transition-colors"></i>
-                        </a>
-                        <a href="https://www.facebook.com/fajar.mustaqin.2025/?locale=id_ID" target="_blank" 
-                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:border-transparent transition-all duration-300">
-                            <i class="fab fa-facebook text-gray-600 dark:text-gray-400 hover:text-white transition-colors"></i>
-                        </a>
-                        <a href="https://github.com/fajarmustaqin" target="_blank" 
-                           class="w-10 h-10 bg-gray-200/80 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center hover:bg-gradient-to-r hover:from-gray-600 hover:to-gray-800 hover:border-transparent transition-all duration-300">
-                            <i class="fab fa-github text-gray-600 dark:text-gray-400 hover:text-white transition-colors"></i>
-                        </a>
-                    </div>
-                    <p class="text-gray-600 dark:text-gray-400 text-sm">
-                        <i class="fas fa-envelope mr-2"></i>
-                        <a href="mailto:fajar@example.com" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Get in touch</a>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Bottom Bar -->
-            <div class="border-t border-gray-200 dark:border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <!-- Copyright -->
                 <p class="text-gray-600 dark:text-gray-400 text-sm">
                     &copy; 2025 <span class="text-blue-600 dark:text-blue-400 font-semibold">Fajar Mustaqin</span>. All rights reserved.
                 </p>
-                <div class="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-400">
-                    <span>Made with <span class="text-red-500">♥</span> using Tailwind CSS</span>
-                </div>
             </div>
         </div>
     </footer>
