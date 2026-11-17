@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail - Fajar Mustaqin</title>
+    <meta name="description" content="Project detail portfolio Fajar Mustaqin">
+
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme');
+            if (theme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                document.documentElement.classList.add('dark');
+                if (!theme) {
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+        })();
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { darkMode: 'class' };
+    </script>
+    <script src="assets/js/projects.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+
+        @keyframes slideInFromRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .slide-in-right { animation: slideInFromRight 0.35s ease-out forwards; }
+        .slide-in-left { animation: slideInFromLeft 0.35s ease-out forwards; }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen" x-data="projectDetailPage()" x-init="init()">
+    <template x-if="!project">
+        <div class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+            <i class="fas fa-exclamation-circle text-4xl text-gray-400 mb-4"></i>
+            <h1 class="text-xl font-bold mb-2">Project not found</h1>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">The project you are looking for does not exist.</p>
+            <a href="index.html#projects" class="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white rounded-lg font-semibold">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Portfolio
+            </a>
+        </div>
+    </template>
+
+    <template x-if="project">
+        <div class="min-h-screen flex flex-col">
+            <header class="sticky top-0 z-30 bg-white/95 dark:bg-gray-900/95 backdrop-blur border-b border-gray-200 dark:border-gray-800">
+                <div class="flex items-center gap-3 px-4 py-3">
+                    <a href="index.html#projects" class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-arrow-left text-gray-700 dark:text-gray-300"></i>
+                    </a>
+                    <div class="flex-1 min-w-0">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold border mb-1"
+                              :class="categoryBadgeClass"
+                              x-text="project.category"></span>
+                        <h1 class="text-base font-bold truncate" x-text="project.title"></h1>
+                    </div>
+                </div>
+            </header>
+
+            <main class="flex-1 pb-8">
+                <div class="relative overflow-hidden bg-gray-100 dark:bg-gray-800 h-[280px] sm:h-[340px]">
+                    <div class="relative h-full">
+                        <template x-for="(slide, index) in project.images" :key="index">
+                            <div x-show="currentSlide === index"
+                                 :class="currentSlide === index ? (direction === 1 ? 'slide-in-right' : 'slide-in-left') : ''"
+                                 class="absolute inset-0 flex items-center justify-center">
+                                <img :src="slide" :alt="'Screenshot ' + (index + 1)" class="max-w-full max-h-full object-contain">
+                            </div>
+                        </template>
+                    </div>
+
+                    <button @click="prevSlide()"
+                            class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 dark:bg-gray-800/90 rounded-full flex items-center justify-center shadow-lg touch-manipulation">
+                        <i class="fas fa-chevron-left text-sm"></i>
+                    </button>
+                    <button @click="nextSlide()"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/90 dark:bg-gray-800/90 rounded-full flex items-center justify-center shadow-lg touch-manipulation">
+                        <i class="fas fa-chevron-right text-sm"></i>
+                    </button>
+
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                        <template x-for="(slide, index) in project.images" :key="'dot-' + index">
+                            <button @click="direction = 1; currentSlide = index"
+                                    :class="currentSlide === index ? 'w-6 ' + dotActiveClass : 'w-1.5 bg-white/50 dark:bg-gray-600/50'"
+                                    class="h-1.5 rounded-full transition-all duration-300 touch-manipulation">
+                            </button>
+                        </template>
+                    </div>
+
+                    <div class="absolute top-3 right-3 bg-black/50 text-white px-2.5 py-1 rounded-full text-xs">
+                        <span x-text="currentSlide + 1"></span> / <span x-text="project.images.length"></span>
+                    </div>
+                </div>
+
+                <div class="px-4 py-6 space-y-6">
+                    <div>
+                        <p class="text-sm leading-relaxed text-gray-700 dark:text-gray-400" x-text="project.fullDesc || project.shortDesc"></p>
+                    </div>
+
+                    <div>
+                        <h2 class="text-base font-semibold mb-3">Technologies Used</h2>
+                        <div class="flex flex-wrap gap-2">
+                            <template x-for="tech in project.techStack" :key="tech">
+                                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs rounded-lg border border-gray-200 dark:border-gray-700"
+                                      x-text="tech"></span>
+                            </template>
+                        </div>
+                    </div>
+
+                    <div class="pt-2" x-show="project.liveUrl && project.liveUrl !== '#'">
+                        <a :href="project.liveUrl" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center justify-center w-full px-6 py-3 text-white rounded-xl font-semibold transition-colors"
+                           :class="buttonClass">
+                            <i class="fas fa-external-link-alt mr-2"></i> View Live
+                        </a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </template>
+
+    <script>
+        function projectDetailPage() {
+            return {
+                project: null,
+                currentSlide: 0,
+                direction: 1,
+                categoryBadgeClass: '',
+                dotActiveClass: 'bg-blue-600',
+                buttonClass: 'bg-blue-600 hover:bg-blue-700 active:bg-blue-800',
+
+                init() {
+                    const params = new URLSearchParams(window.location.search);
+                    const id = params.get('id');
+                    this.project = getProjectById(id);
+
+                    if (this.project) {
+                        document.title = this.project.title + ' - Fajar Mustaqin';
+                        this.categoryBadgeClass = getCategoryBadgeClass(this.project.categoryColor);
+                        this.dotActiveClass = getCategoryDotClass(this.project.categoryColor);
+                        this.buttonClass = getButtonColorClass(this.project.categoryColor);
+                    }
+                },
+
+                nextSlide() {
+                    if (!this.project) return;
+                    this.direction = 1;
+                    this.currentSlide = this.currentSlide < this.project.images.length - 1 ? this.currentSlide + 1 : 0;
+                },
+
+                prevSlide() {
+                    if (!this.project) return;
+                    this.direction = -1;
+                    this.currentSlide = this.currentSlide > 0 ? this.currentSlide - 1 : this.project.images.length - 1;
+                }
+            };
+        }
+    </script>
+</body>
+</html>
